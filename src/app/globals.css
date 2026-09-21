@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────────── */
+@theme {
+  --color-red-dark:    #9c0200;
+  --color-red-light:   #fd2006;
+  --color-brand-black: #0a0a0a;
+  --color-brand-white: #f5f5f5;
+
+  --font-heading: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-body:    var(--font-inter), system-ui, sans-serif;
+}
+
+/* ─── Day / Night Theme Variables ───────────────────── */
+:root,
+[data-theme="day"] {
+  --bg:          #f5f5f5;
+  --text:        #0a0a0a;
+  --text-muted:  #555555;
+  --surface:     #ffffff;
+  --border:      #e5e5e5;
+}
+
+[data-theme="night"] {
+  --bg:          #0a0a0a;
+  --text:        #f5f5f5;
+  --text-muted:  #aaaaaa;
+  --surface:     #111111;
+  --border:      #222222;
+}
+
+/* ─── Base ───────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: background-color 0.8s ease, color 0.8s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ─── Utilities ──────────────────────────────────────── */
+
+/* Solid Brand Red — buttons and accents */
+.bg-brand-red,
+.bg-red-gradient {
+  background-color: #9c0200;
+  transition: background-color 0.2s ease;
+}
+
+.bg-brand-red:hover,
+.bg-red-gradient:hover {
+  background-color: #b50300;
+}
+
+/* Hide scrollbar but keep scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Thin branded scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #9c0200;
+  border-radius: 2px;
+}
