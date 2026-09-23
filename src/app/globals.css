@@ -32,6 +32,7 @@
 /* ─── Base ───────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -41,7 +42,7 @@ body {
   transition: background-color 0.8s ease, color 0.8s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -81,4 +82,15 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb {
   background: #9c0200;
   border-radius: 2px;
+}
+
+/* ─── Marquee Loop Animation ─────────────────────────── */
+@keyframes marquee-loop {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.3334%); }
+}
+
+.animate-marquee-loop {
+  animation: marquee-loop 26s linear infinite;
+  will-change: transform;
 }

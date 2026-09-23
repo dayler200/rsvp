@@ -2,12 +2,14 @@
 
 import React, { useEffect } from "react";
 import { RestaurantHero } from "@/components/restaurant/RestaurantHero";
+import { RestaurantMarquee } from "@/components/restaurant/RestaurantMarquee";
 import { RestaurantFeatures } from "@/components/restaurant/RestaurantFeatures";
 import { RestaurantBento } from "@/components/restaurant/RestaurantBento";
+import { RestaurantGallery } from "@/components/restaurant/RestaurantGallery";
+import { RestaurantLocation } from "@/components/restaurant/RestaurantLocation";
 import { Footer } from "@/components/layout/Footer";
 
 export default function RestaurantPage() {
-  // Enforce Light / White theme permanently on the Restaurant page
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.setAttribute("data-theme", "day");
@@ -30,17 +32,14 @@ export default function RestaurantPage() {
       }
     >
       <main className="flex flex-col">
-        {/* 1. Hero with side-by-side burger on left, text and single View Menu button on right */}
         <RestaurantHero />
-
-        {/* 2. About the Restaurant section (sits on main white background, no card/borders/buttons) */}
+        <RestaurantMarquee />
         <RestaurantFeatures />
-
-        {/* 3. 6-card asymmetrical Bento mosaic (side-by-side on all screens, waiter image in card 1) */}
         <RestaurantBento />
+        <RestaurantGallery />
+        <RestaurantLocation />
       </main>
 
-      {/* 4. Shared brand footer */}
       <Footer />
     </div>
   );

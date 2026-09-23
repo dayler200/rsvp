@@ -6,21 +6,21 @@ import { motion } from "framer-motion";
 
 // Start fast, decelerate smoothly (ease-out) — matches WhoWeAre
 const EASE = [0.16, 1, 0.3, 1] as const;
-const VIEWPORT = { once: false, amount: 0.2 } as const;
+const VIEWPORT = { once: true, amount: 0.2 } as const;
 
 // Separate opacity (fast) from x/y movement (slow, smooth)
 const SLIDE_TRANSITION = (delay = 0) => ({
-  x: { duration: 1.6, ease: EASE, delay },
+  x: { duration: 1.2, ease: EASE, delay },
 });
 const RISE_TRANSITION = (delay = 0) => ({
-  y: { duration: 1.5, ease: EASE, delay },
+  y: { duration: 0.8, ease: EASE, delay },
 });
 
 export function MenuTeaser() {
   return (
     <section
       id="menu-teaser"
-      className="relative overflow-visible z-10"
+      className="relative overflow-hidden lg:overflow-visible z-10"
       style={{ backgroundColor: "var(--bg)" }}
     >
       <div className="w-full h-px" style={{ backgroundColor: "var(--border)" }} />
@@ -52,23 +52,23 @@ export function MenuTeaser() {
 
         {/* ─── CENTRE: Text + CTA ─────────────────────────────────────── */}
         <motion.div
-          initial={{ y: 50 }}
-          whileInView={{ y: 0 }}
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
           viewport={VIEWPORT}
-          transition={RISE_TRANSITION(0.2)}
-          className="flex flex-col items-start text-left lg:items-center lg:text-center gap-4 py-10 px-5 lg:py-20 lg:px-14 justify-center"
+          transition={RISE_TRANSITION(0.1)}
+          className="flex flex-col items-start text-left lg:items-center lg:text-center gap-3.5 sm:gap-4 py-8 px-4 sm:px-5 lg:py-20 lg:px-14 justify-center min-w-0"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-[2.6rem] font-bold tracking-tight text-[var(--text)] leading-[1.15]">
+          <h2 className="text-xl sm:text-3xl lg:text-[2.6rem] font-bold tracking-tight text-[var(--text)] leading-[1.15]">
             Crafted to<br />be remembered.
           </h2>
 
-          <p className="text-[var(--text-muted)] text-sm leading-relaxed max-w-[300px] lg:max-w-[340px]">
+          <p className="text-[var(--text-muted)] text-xs sm:text-sm leading-relaxed max-w-[260px] sm:max-w-[300px] lg:max-w-[340px]">
             From flame-grilled signatures to handcrafted cocktails, every plate
             and glass at Rendezvous tells a story worth savouring.
           </p>
 
           {/* Coming soon — menu page not yet built */}
-          <button className="mt-2 bg-[#9c0200] hover:bg-[#b50300] text-white font-semibold text-sm py-3 px-7 lg:py-3.5 lg:px-9 rounded-2xl shadow-md active:scale-95 transition-all">
+          <button className="mt-1 sm:mt-2 bg-[#9c0200] hover:bg-[#b50300] text-white font-semibold text-xs sm:text-sm py-2.5 px-4 sm:py-3 sm:px-7 lg:py-3.5 lg:px-9 rounded-2xl shadow-md active:scale-95 transition-all">
             View Full Menu
           </button>
         </motion.div>

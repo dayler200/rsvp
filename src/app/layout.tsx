@@ -47,10 +47,10 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${spaceGrotesk.variable} ${inter.variable}`}
     >
-      <body className="min-h-screen antialiased">
+      <body className="min-h-screen antialiased overflow-x-hidden w-full max-w-full">
         <ThemeProvider>
           <Navbar />
-          <main>{children}</main>
+          <main className="overflow-x-hidden w-full max-w-full">{children}</main>
           <StickyReserve />
         </ThemeProvider>
       </body>

@@ -2,14 +2,7 @@
 
 import React, { useRef, useLayoutEffect } from "react";
 
-// 7-card symmetric size progression:
-// Card 1: outer (left) 270px -> inner (right) 235px (matches Card 2 outer)
-// Card 2: outer (left) 235px -> inner (right) 202px (matches Card 3 outer)
-// Card 3: outer (left) 202px -> inner (right) 175px (matches Card 4 outer)
-// Card 4: centre card flat 175px on both edges (compact focal point)
-// Card 5: inner (left) 175px -> outer (right) 202px (matches Card 6 outer)
-// Card 6: inner (left) 202px -> outer (right) 235px (matches Card 7 outer)
-// Card 7: inner (left) 235px -> outer (right) 270px
+// 7-card symmetric size progression (identical to home Gallery)
 const GALLERY = [
   {
     id: 1,
@@ -18,7 +11,7 @@ const GALLERY = [
     w: 215,
     hLeft: 270,
     hRight: 235,
-  }, // LARGE far left
+  },
   {
     id: 2,
     bg: "#c4b8a8",
@@ -26,7 +19,7 @@ const GALLERY = [
     w: 188,
     hLeft: 235,
     hRight: 202,
-  }, // MEDIUM-LARGE
+  },
   {
     id: 3,
     bg: "#d4c4a0",
@@ -34,7 +27,7 @@ const GALLERY = [
     w: 162,
     hLeft: 202,
     hRight: 175,
-  }, // MEDIUM
+  },
   {
     id: 4,
     bg: "#9ab0b8",
@@ -42,7 +35,7 @@ const GALLERY = [
     w: 140,
     hLeft: 175,
     hRight: 175,
-  }, // SMALL centre
+  },
   {
     id: 5,
     bg: "#b8a8c0",
@@ -50,7 +43,7 @@ const GALLERY = [
     w: 162,
     hLeft: 175,
     hRight: 202,
-  }, // MEDIUM
+  },
   {
     id: 6,
     bg: "#c8a898",
@@ -58,7 +51,7 @@ const GALLERY = [
     w: 188,
     hLeft: 202,
     hRight: 235,
-  }, // MEDIUM-LARGE
+  },
   {
     id: 7,
     bg: "#a8b0a0",
@@ -66,12 +59,11 @@ const GALLERY = [
     w: 215,
     hLeft: 235,
     hRight: 270,
-  }, // LARGE far right
+  },
 ];
 
-const GAP = 10; // px between cards
+const GAP = 10;
 
-// Helper to generate a smooth rounded trapezoid path for pixel-perfect edge height matching
 function createTrapezoidPath(w: number, hLeft: number, hRight: number, r = 22) {
   const h = Math.max(hLeft, hRight);
   const yTopLeft = (h - hLeft) / 2;
@@ -95,7 +87,7 @@ function createTrapezoidPath(w: number, hLeft: number, hRight: number, r = 22) {
   ].join(" ");
 }
 
-export function Gallery() {
+export function RestaurantGallery() {
   const mobileTrackRef = useRef<HTMLDivElement>(null);
   const mobileCardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -103,7 +95,6 @@ export function Gallery() {
     const track = mobileTrackRef.current;
     if (!track) return;
 
-    // Center on Card 4 (index 3) on load so 3 cards (3, 4, 5) are framed initially
     const centerCard = mobileCardsRef.current[3];
     if (centerCard) {
       const scrollTarget =
@@ -127,18 +118,13 @@ export function Gallery() {
     const updateScales = () => {
       if (!track) return;
       const trackCenter = track.scrollLeft + track.clientWidth / 2;
-      // Slot distance between card centers (card 148px + gap 14px = 162px)
       const slotDist = 162;
 
       mobileCardsRef.current.forEach((card) => {
         if (!card) return;
         const cardCenter = card.offsetLeft + card.offsetWidth / 2;
         const dist = Math.abs(trackCenter - cardCenter);
-        // Normalized progress: 0 when centered, 1 when one slot away (left/right flank), up to 1.8 at edges
         const progress = Math.min(dist / slotDist, 1.8);
-        // Center card (progress 0) is compact: 175px (scale 1.0)
-        // Moving outward (progress 1): smoothly expands to ~225px (scale 1.28)
-        // Far edges: up to ~255px (scale 1.48)
         const scale = 1 + progress * 0.28;
         card.style.transform = `scale(${scale})`;
       });
@@ -155,21 +141,20 @@ export function Gallery() {
   }, []);
 
   return (
-    <section id="gallery" className="pt-16 pb-6 overflow-hidden" style={{ backgroundColor: "var(--bg)" }}>
-      {/* SVG Clip Paths for smooth rounded trapezoid cards (Desktop) */}
+    <section id="restaurant-gallery" className="pt-16 pb-6 overflow-hidden" style={{ backgroundColor: "var(--bg)" }}>
+      {/* SVG Clip Paths for desktop trapezoid cards */}
       <svg width="0" height="0" className="absolute pointer-events-none opacity-0" aria-hidden="true">
         <defs>
           {GALLERY.map((item) => (
-            <clipPath key={item.id} id={`gallery-card-clip-${item.id}`}>
+            <clipPath key={item.id} id={`rg-card-clip-${item.id}`}>
               <path d={createTrapezoidPath(item.w, item.hLeft, item.hRight, 22)} />
             </clipPath>
           ))}
         </defs>
       </svg>
 
-      {/* ── Headline block ────────────────────────────────────────────────────── */}
+      {/* Headline block */}
       <div className="relative max-w-5xl mx-auto text-center px-6 mb-10">
-        {/* Decorative slash — left of headline */}
         <span
           aria-hidden="true"
           className="absolute left-[5%] lg:left-[7%] top-[28%] text-5xl text-[var(--text-muted)] select-none pointer-events-none"
@@ -183,7 +168,6 @@ export function Gallery() {
           /
         </span>
 
-        {/* Decorative note — right of headline */}
         <div
           aria-hidden="true"
           className="absolute right-[4%] lg:right-[6%] top-1 flex flex-col items-center gap-0.5 select-none pointer-events-none"
@@ -200,26 +184,22 @@ export function Gallery() {
           </svg>
         </div>
 
-        {/* Main headline */}
         <h2
           className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-[var(--text)] leading-[1.1]"
           style={{ fontFamily: "var(--font-heading)" }}
         >
-          A Night Worth<br />Remembering.
+          Inside<br />Rendezvous restaurant.
         </h2>
 
-        {/* Sub-paragraph */}
         <p
           className="mt-4 text-[var(--text-muted)] text-base leading-relaxed max-w-sm mx-auto"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          Step into Blantyre&apos;s finest dining, lounge and club experience.
-          Every visit tells a story worth sharing.
+          A glimpse into the flavours, spaces, and stories that make every visit unforgettable.
         </p>
       </div>
 
-      {/* ── MOBILE TOUCH-SCROLL CAROUSEL (< 1024px) ──────────────────────────── */}
-      {/* 3 cards visible at a time: center card is 175px, expanding outward as you swipe */}
+      {/* MOBILE TOUCH-SCROLL CAROUSEL (< 1024px) */}
       <div
         ref={mobileTrackRef}
         className="lg:hidden w-full overflow-x-auto scrollbar-hide py-10 flex items-center select-none"
@@ -248,19 +228,18 @@ export function Gallery() {
               {item.img && (
                 <img
                   src={item.img}
-                  alt={`Rendezvous Gallery ${item.id}`}
+                  alt={`Rendezvous Restaurant ${item.id}`}
                   className="w-full h-full object-cover pointer-events-none select-none"
                   loading="lazy"
                 />
               )}
-              {/* Subtle bottom vignette */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── DESKTOP STATIC TAPERED CURVE (>= 1024px) ─────────────────────────── */}
+      {/* DESKTOP STATIC TAPERED CURVE (>= 1024px) */}
       <div className="w-full hidden lg:flex justify-center overflow-x-auto pb-4" style={{ scrollbarWidth: "none" }}>
         <div className="flex items-center" style={{ gap: GAP }}>
           {GALLERY.map((item) => {
@@ -269,23 +248,21 @@ export function Gallery() {
               <div
                 key={item.id}
                 className="flex-shrink-0"
-                style={{
-                  filter: "drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08))",
-                }}
+                style={{ filter: "drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08))" }}
               >
                 <div
                   style={{
                     width: item.w,
                     height: maxH,
                     backgroundColor: item.bg,
-                    clipPath: `url(#gallery-card-clip-${item.id})`,
+                    clipPath: `url(#rg-card-clip-${item.id})`,
                   }}
                   className="relative overflow-hidden"
                 >
                   {item.img && (
                     <img
                       src={item.img}
-                      alt={`Rendezvous Gallery ${item.id}`}
+                      alt={`Rendezvous Restaurant ${item.id}`}
                       className="w-full h-full object-cover"
                     />
                   )}

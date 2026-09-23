@@ -235,7 +235,7 @@ export function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-4 py-2.5 rounded-xl text-2xl font-semibold tracking-tight transition-colors ${
+                      className={`block px-4 py-2.5 rounded-xl text-base font-semibold tracking-tight transition-colors ${
                         isActive
                           ? "text-[#fd2006] bg-[#fd2006]/15 font-bold"
                           : isNight

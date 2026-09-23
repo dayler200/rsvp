@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 
 export function RestaurantHero() {
   return (
-    <section className="pt-24 sm:pt-28 pb-8 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
+    <section className="pt-20 sm:pt-28 pb-10 sm:pb-16 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto flex flex-col justify-center min-h-[70vh] sm:min-h-[80vh]">
       {/* ─── HERO CONTENT: No card, no borders, pure clean white background ─── */}
-      <div className="relative w-full py-4 sm:py-8">
+      <div className="relative w-full py-2 sm:py-6">
         {/* Side-by-side on both mobile and desktop */}
         <div className="grid grid-cols-12 gap-3 sm:gap-8 lg:gap-12 items-center">
 

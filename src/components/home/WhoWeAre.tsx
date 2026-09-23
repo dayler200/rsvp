@@ -7,7 +7,7 @@ import { useTheme } from "../layout/ThemeProvider";
 
 // Start fast, decelerate smoothly (ease-out) — same as MenuTeaser images
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
-const VIEWPORT = { once: false, amount: 0.15 } as const;
+const VIEWPORT = { once: true, amount: 0.15 } as const;
 
 export function WhoWeAre() {
   const { isNight } = useTheme();
@@ -16,7 +16,7 @@ export function WhoWeAre() {
   return (
     <section
       id="who-we-are"
-      className="py-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto"
+      className="py-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto overflow-hidden"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
 
@@ -25,10 +25,10 @@ export function WhoWeAre() {
 
           {/* Heading — line 1 */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
-            transition={{ duration: 0.85, ease: EASE_OUT, delay: 0 }}
+            transition={{ duration: 0.55, ease: EASE_OUT, delay: 0 }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-current leading-[1.14]"
           >
             Born in Blantyre.
@@ -36,10 +36,10 @@ export function WhoWeAre() {
 
           {/* Heading — line 2 */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
-            transition={{ duration: 0.85, ease: EASE_OUT, delay: 0.11 }}
+            transition={{ duration: 0.55, ease: EASE_OUT, delay: 0.08 }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-current leading-[1.14] mb-6"
           >
             Crafted for moments that linger.
@@ -47,10 +47,10 @@ export function WhoWeAre() {
 
           {/* Body — paragraph 1 */}
           <motion.p
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
-            transition={{ duration: 0.85, ease: EASE_OUT, delay: 0.23 }}
+            transition={{ duration: 0.55, ease: EASE_OUT, delay: 0.16 }}
             className={`text-base sm:text-lg leading-relaxed ${muted}`}
           >
             Rendezvous is more than a destination; it is Blantyre&apos;s premier
@@ -59,10 +59,10 @@ export function WhoWeAre() {
 
           {/* Body — paragraph 2 */}
           <motion.p
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
-            transition={{ duration: 0.85, ease: EASE_OUT, delay: 0.36 }}
+            transition={{ duration: 0.55, ease: EASE_OUT, delay: 0.24 }}
             className={`text-base sm:text-lg leading-relaxed mt-4 ${muted}`}
           >
             Under one architectural roof, three distinct worlds coexist in
@@ -71,12 +71,12 @@ export function WhoWeAre() {
           </motion.p>
         </div>
 
-        {/* ─── RIGHT: Image — slides from right, no fade ─────────────── */}
+        {/* ─── RIGHT: Image — smooth fade + vertical rise (no horizontal drag) ─────────────── */}
         <motion.div
-          initial={{ x: 80 }}
-          whileInView={{ x: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={VIEWPORT}
-          transition={{ duration: 1.4, ease: EASE_OUT }}
+          transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.12 }}
           className="lg:col-span-5 relative w-full min-h-[300px] sm:min-h-[360px] rounded-2xl overflow-hidden shadow-lg border border-black/10 dark:border-white/10"
         >
           <Image
