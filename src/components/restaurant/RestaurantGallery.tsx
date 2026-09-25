@@ -89,7 +89,7 @@ function createTrapezoidPath(w: number, hLeft: number, hRight: number, r = 22) {
 
 export function RestaurantGallery() {
   return (
-    <section id="restaurant-gallery" className="pt-16 pb-6 overflow-hidden" style={{ backgroundColor: "var(--bg)" }}>
+    <section id="restaurant-gallery" className="pt-16 pb-12 overflow-hidden" style={{ backgroundColor: "var(--bg)" }}>
       {/* SVG Clip Paths for desktop trapezoid cards */}
       <svg width="0" height="0" className="absolute pointer-events-none opacity-0" aria-hidden="true">
         <defs>
@@ -174,6 +174,8 @@ export function RestaurantGallery() {
                       src={item.img}
                       alt={`Rendezvous Restaurant ${item.id}`}
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   )}
                 </div>

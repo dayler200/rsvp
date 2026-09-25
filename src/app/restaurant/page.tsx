@@ -1,46 +1,29 @@
-"use client";
+import type { Metadata } from "next";
+import { RestaurantContent } from "./RestaurantContent";
 
-import React, { useEffect } from "react";
-import { RestaurantHero } from "@/components/restaurant/RestaurantHero";
-import { RestaurantMarquee } from "@/components/restaurant/RestaurantMarquee";
-import { RestaurantFeatures } from "@/components/restaurant/RestaurantFeatures";
-import { RestaurantBento } from "@/components/restaurant/RestaurantBento";
-import { RestaurantGallery } from "@/components/restaurant/RestaurantGallery";
-import { RestaurantLocation } from "@/components/restaurant/RestaurantLocation";
-import { Footer } from "@/components/layout/Footer";
+export const metadata: Metadata = {
+  title: "Restaurant | Fine Dining & Steaks",
+  description:
+    "Indulge in artisanal culinary creations, signature steaks, and curated fine dining at Rendezvous Exclusive Restaurant in Blantyre.",
+  alternates: {
+    canonical: "/restaurant",
+  },
+  openGraph: {
+    title: "Restaurant | Fine Dining & Steaks — Rendezvous Exclusive",
+    description:
+      "Artisanal culinary creations, signature prime steaks, and curated fine dining in Blantyre.",
+    url: "/restaurant",
+    images: [
+      {
+        url: "/ogimage.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Rendezvous Exclusive Restaurant — Fine Dining in Blantyre",
+      },
+    ],
+  },
+};
 
 export default function RestaurantPage() {
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.documentElement.setAttribute("data-theme", "day");
-    }
-  }, []);
-
-  return (
-    <div
-      className="min-h-screen bg-[#fcfcfc] text-zinc-900 transition-colors duration-300"
-      style={
-        {
-          "--bg": "#fcfcfc",
-          "--text": "#0a0a0a",
-          "--text-muted": "#555555",
-          "--surface": "#ffffff",
-          "--border": "#e5e5e5",
-          backgroundColor: "#fcfcfc",
-          color: "#0a0a0a",
-        } as React.CSSProperties
-      }
-    >
-      <main className="flex flex-col">
-        <RestaurantHero />
-        <RestaurantMarquee />
-        <RestaurantFeatures />
-        <RestaurantBento />
-        <RestaurantGallery />
-        <RestaurantLocation />
-      </main>
-
-      <Footer />
-    </div>
-  );
+  return <RestaurantContent />;
 }

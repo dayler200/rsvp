@@ -105,7 +105,7 @@ export function LoungeGallery() {
       <div className="relative max-w-5xl mx-auto text-center px-6 mb-10">
         <span
           aria-hidden="true"
-          className="absolute left-[5%] lg:left-[7%] top-[28%] text-5xl text-zinc-300 select-none pointer-events-none"
+          className="absolute left-[5%] lg:left-[7%] top-[28%] text-5xl text-[var(--text-muted)] select-none pointer-events-none"
           style={{
             fontFamily: "var(--font-heading)",
             fontStyle: "italic",
@@ -121,26 +121,26 @@ export function LoungeGallery() {
           className="absolute right-[4%] lg:right-[6%] top-1 flex flex-col items-center gap-0.5 select-none pointer-events-none"
         >
           <span
-            className="text-[0.8rem] text-zinc-400 leading-snug text-center"
+            className="text-[0.8rem] text-[var(--text-muted)] leading-snug text-center"
             style={{ fontFamily: "var(--font-body)", fontStyle: "italic", maxWidth: "96px" }}
           >
             Experience<br />Rendezvous
           </span>
-          <svg width="38" height="28" viewBox="0 0 38 28" fill="none" aria-hidden className="text-zinc-400">
+          <svg width="38" height="28" viewBox="0 0 38 28" fill="none" aria-hidden className="text-[var(--text-muted)]">
             <path d="M33 3 C22 3, 7 9, 5 24" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" fill="none" />
             <path d="M2 21 L5 25 L9 21" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
           </svg>
         </div>
 
         <h2
-          className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white leading-[1.1]"
+          className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-[var(--text)] leading-[1.1]"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Inside<br />Rendezvous lounge.
         </h2>
 
         <p
-          className="mt-4 text-zinc-400 text-base leading-relaxed max-w-sm mx-auto"
+          className="mt-4 text-[var(--text-muted)] text-base leading-relaxed max-w-sm mx-auto"
           style={{ fontFamily: "var(--font-body)" }}
         >
           A glimpse into the cocktails, soundscapes, and nighttime energy that define our lounge.
