@@ -7,11 +7,11 @@ import { motion } from "framer-motion";
 
 export function RestaurantHero() {
   return (
-    <section className="pt-20 sm:pt-28 pb-10 sm:pb-16 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto flex flex-col justify-center min-h-[70vh] sm:min-h-[80vh]">
+    <section className="pt-14 sm:pt-24 lg:pt-28 pb-4 sm:pb-12 lg:pb-16 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto flex flex-col justify-center max-sm:aspect-[4/3] max-sm:min-h-0 sm:min-h-[75vh]">
       {/* ─── HERO CONTENT: No card, no borders, pure clean white background ─── */}
-      <div className="relative w-full py-2 sm:py-6">
+      <div className="relative w-full py-1 sm:py-6">
         {/* Side-by-side on both mobile and desktop */}
-        <div className="grid grid-cols-12 gap-3 sm:gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-12 gap-2 sm:gap-8 lg:gap-12 items-center">
 
           {/* Left Column: Burger Image (/bugger1.png) */}
           <div className="col-span-5 sm:col-span-5 lg:col-span-5 flex items-center justify-center">
@@ -19,7 +19,7 @@ export function RestaurantHero() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full h-[200px] sm:h-[320px] md:h-[380px] lg:h-[440px] flex items-center justify-center"
+              className="relative w-full h-[140px] xs:h-[160px] sm:h-[320px] md:h-[380px] lg:h-[440px] flex items-center justify-center"
             >
               <Image
                 src="/bugger1.png"

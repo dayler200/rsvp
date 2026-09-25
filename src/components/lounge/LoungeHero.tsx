@@ -14,7 +14,7 @@ export function LoungeHero() {
 
   return (
     <section
-      className="pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto"
+      className="pt-24 sm:pt-32 pb-4 sm:pb-8 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto"
     >
       <div className="grid grid-cols-12 gap-4 sm:gap-8 lg:gap-14 items-center">
 

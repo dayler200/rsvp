@@ -95,6 +95,8 @@ function createTrapezoidPath(w: number, hLeft: number, hRight: number, r = 22) {
   ].join(" ");
 }
 
+const MOBILE_GALLERY = [...GALLERY, ...GALLERY, ...GALLERY];
+
 export function Gallery() {
   const mobileTrackRef = useRef<HTMLDivElement>(null);
   const mobileCardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -103,66 +105,60 @@ export function Gallery() {
     const track = mobileTrackRef.current;
     if (!track) return;
 
-    // Center on Card 4 (index 3) on load so 3 cards (3, 4, 5) are framed initially
-    const centerCard = mobileCardsRef.current[3];
-    if (centerCard) {
-      const scrollTarget =
-        centerCard.offsetLeft +
-        centerCard.offsetWidth / 2 -
+    // Start centered on Card 4 of the middle set (index 10 = middle of 21 items)
+    const middleCenterCard = mobileCardsRef.current[10];
+    if (middleCenterCard) {
+      track.scrollLeft =
+        middleCenterCard.offsetLeft +
+        middleCenterCard.offsetWidth / 2 -
         track.clientWidth / 2;
-      track.scrollLeft = scrollTarget;
     }
 
-    let ticking = false;
     const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          updateScales();
-          ticking = false;
-        });
-        ticking = true;
+      const card0 = mobileCardsRef.current[0];
+      const card7 = mobileCardsRef.current[7];
+      if (!card0 || !card7) return;
+
+      const singleCycleWidth = card7.offsetLeft - card0.offsetLeft;
+      if (singleCycleWidth <= 0) return;
+
+      // Invisible teleport when reaching outer boundaries
+      if (track.scrollLeft < singleCycleWidth * 0.5) {
+        track.scrollLeft += singleCycleWidth;
+      } else if (track.scrollLeft > singleCycleWidth * 1.5) {
+        track.scrollLeft -= singleCycleWidth;
       }
     };
 
-    const updateScales = () => {
-      if (!track) return;
-      const trackCenter = track.scrollLeft + track.clientWidth / 2;
-      // Slot distance between card centers (card 148px + gap 14px = 162px)
-      const slotDist = 162;
-
-      mobileCardsRef.current.forEach((card) => {
-        if (!card) return;
-        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-        const dist = Math.abs(trackCenter - cardCenter);
-        // Normalized progress: 0 when centered, 1 when one slot away (left/right flank), up to 1.8 at edges
-        const progress = Math.min(dist / slotDist, 1.8);
-        // Center card (progress 0) is compact: 175px (scale 1.0)
-        // Moving outward (progress 1): smoothly expands to ~225px (scale 1.28)
-        // Far edges: up to ~255px (scale 1.48)
-        const scale = 1 + progress * 0.28;
-        card.style.transform = `scale(${scale})`;
-      });
-    };
-
-    updateScales();
     track.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", updateScales);
-
     return () => {
       track.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", updateScales);
     };
   }, []);
 
   return (
     <section id="gallery" className="pt-16 pb-6 overflow-hidden" style={{ backgroundColor: "var(--bg)" }}>
-      {/* SVG Clip Paths for smooth rounded trapezoid cards (Desktop) */}
+      {/* SVG Clip Paths for smooth rounded trapezoid cards (Desktop & Mobile) */}
       <svg width="0" height="0" className="absolute pointer-events-none opacity-0" aria-hidden="true">
         <defs>
           {GALLERY.map((item) => (
-            <clipPath key={item.id} id={`gallery-card-clip-${item.id}`}>
-              <path d={createTrapezoidPath(item.w, item.hLeft, item.hRight, 22)} />
-            </clipPath>
+            <React.Fragment key={item.id}>
+              {/* Desktop Clip Path */}
+              <clipPath id={`gallery-card-clip-${item.id}`}>
+                <path d={createTrapezoidPath(item.w, item.hLeft, item.hRight, 22)} />
+              </clipPath>
+              {/* Mobile Clip Path (scaled ~0.8x with rounded tapered top) */}
+              <clipPath id={`gallery-mobile-card-clip-${item.id}`}>
+                <path
+                  d={createTrapezoidPath(
+                    Math.round(item.w * 0.8),
+                    Math.round(item.hLeft * 0.8),
+                    Math.round(item.hRight * 0.8),
+                    18
+                  )}
+                />
+              </clipPath>
+            </React.Fragment>
           ))}
         </defs>
       </svg>
@@ -205,7 +201,7 @@ export function Gallery() {
           className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-[var(--text)] leading-[1.1]"
           style={{ fontFamily: "var(--font-heading)" }}
         >
-          A Night Worth<br />Remembering.
+          A Place Worth<br />Remembering.
         </h2>
 
         {/* Sub-paragraph */}
@@ -219,44 +215,56 @@ export function Gallery() {
       </div>
 
       {/* ── MOBILE TOUCH-SCROLL CAROUSEL (< 1024px) ──────────────────────────── */}
-      {/* 3 cards visible at a time: center card is 175px, expanding outward as you swipe */}
       <div
         ref={mobileTrackRef}
         className="lg:hidden w-full overflow-x-auto scrollbar-hide py-10 flex items-center select-none"
         style={{
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",
-          paddingLeft: "calc(50vw - 74px)",
-          paddingRight: "calc(50vw - 74px)",
+          paddingLeft: "calc(50vw - 56px)",
+          paddingRight: "calc(50vw - 56px)",
         }}
       >
-        <div className="flex items-center gap-3.5">
-          {GALLERY.map((item, idx) => (
-            <div
-              key={item.id}
-              ref={(el) => {
-                mobileCardsRef.current[idx] = el;
-              }}
-              className="flex-shrink-0 rounded-2xl overflow-hidden shadow-lg will-change-transform transition-transform duration-75 relative"
-              style={{
-                width: "148px",
-                height: "175px",
-                scrollSnapAlign: "center",
-                backgroundColor: item.bg,
-              }}
-            >
-              {item.img && (
-                <img
-                  src={item.img}
-                  alt={`Rendezvous Gallery ${item.id}`}
-                  className="w-full h-full object-cover pointer-events-none select-none"
-                  loading="lazy"
-                />
-              )}
-              {/* Subtle bottom vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
-            </div>
-          ))}
+        <div className="flex items-center gap-3">
+          {MOBILE_GALLERY.map((item, idx) => {
+            const mW = Math.round(item.w * 0.8);
+            const mMaxH = Math.round(Math.max(item.hLeft, item.hRight) * 0.8);
+
+            return (
+              <div
+                key={`${item.id}-${idx}`}
+                ref={(el) => {
+                  mobileCardsRef.current[idx] = el;
+                }}
+                className="flex-shrink-0 will-change-transform transition-transform duration-75 relative"
+                style={{
+                  scrollSnapAlign: "center",
+                  filter: "drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08))",
+                }}
+              >
+                <div
+                  style={{
+                    width: `${mW}px`,
+                    height: `${mMaxH}px`,
+                    backgroundColor: item.bg,
+                    clipPath: `url(#gallery-mobile-card-clip-${item.id})`,
+                  }}
+                  className="relative overflow-hidden"
+                >
+                  {item.img && (
+                    <img
+                      src={item.img}
+                      alt={`Rendezvous Gallery ${item.id}`}
+                      className="w-full h-full object-cover pointer-events-none select-none"
+                      loading="lazy"
+                    />
+                  )}
+                  {/* Subtle bottom vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 

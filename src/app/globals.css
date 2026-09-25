@@ -91,6 +91,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-marquee-loop {
-  animation: marquee-loop 26s linear infinite;
+  animation: marquee-loop 14s linear infinite;
   will-change: transform;
+}
+
+/* ─── Footer Theming & Wordmark Visibility ───────────── */
+[data-theme="night"] footer,
+footer.force-dark {
+  background-color: #0a0a0a !important;
+  color: #f5f5f5 !important;
+}
+
+[data-theme="night"] .footer-wordmark,
+footer.force-dark .footer-wordmark {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+[data-theme="day"] footer:not(.force-dark) {
+  background-color: #ffffff !important;
+  color: #0a0a0a !important;
+}
+
+[data-theme="day"] footer:not(.force-dark) .footer-wordmark {
+  fill: #0a0a0a !important;
+  color: #0a0a0a !important;
 }

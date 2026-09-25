@@ -57,18 +57,26 @@ const SOCIALS = [
   },
 ];
 
-export function Footer() {
-  const { isNight } = useTheme();
+export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
+  const { isNight, mounted } = useTheme();
+  const effectiveNight = forceDark || isNight;
 
-  const linkColor   = isNight ? "text-zinc-300 hover:text-[#fd2006]" : "text-zinc-700 hover:text-[#fd2006]";
-  const mutedColor  = isNight ? "text-zinc-400" : "text-zinc-400";
-  const brandText   = isNight ? "text-zinc-200" : "text-zinc-800";
-  const svgFill     = isNight ? "text-zinc-100"  : "text-zinc-950";
-  const borderColor = isNight ? "border-zinc-800" : "border-zinc-200/80";
-  const bg          = isNight ? "bg-[#0a0a0a] text-zinc-100" : "bg-white text-zinc-900";
+  // forceDark is a static prop (same on server + client) so it's safe to use
+  // directly. Only isNight (time-based) needs the mounted guard to avoid SSR
+  // hydration mismatches.
+  const logoSrc = forceDark
+    ? "/allwhitelogo.png"
+    : (mounted && isNight ? "/allwhitelogo.png" : "/Rendezvous_logoall.png");
+
+  const linkColor   = effectiveNight ? "text-zinc-300 hover:text-[#fd2006]" : "text-zinc-700 hover:text-[#fd2006]";
+  const mutedColor  = effectiveNight ? "text-zinc-400" : "text-zinc-400";
+  const brandText   = effectiveNight ? "text-zinc-100" : "text-zinc-800";
+  const svgFill     = effectiveNight ? "text-white fill-white" : "text-zinc-950 fill-zinc-950";
+  const borderColor = effectiveNight ? "border-zinc-800" : "border-zinc-200/80";
+  const bg          = effectiveNight ? "bg-[#0a0a0a] text-zinc-100" : "bg-white text-zinc-900";
 
   return (
-    <footer className={`w-full pt-16 pb-0 overflow-hidden ${bg}`}>
+    <footer className={`w-full pt-16 pb-0 overflow-hidden ${bg} ${forceDark ? "force-dark" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
         {/* ─── DESKTOP UPPER CONTENT (>= 1024px) ────────────────── */}
@@ -119,7 +127,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label={social.name}
                   className={`w-9 h-9 rounded-full border flex items-center justify-center transition-all hover:scale-110 active:scale-95 ${
-                    isNight
+                    effectiveNight
                       ? "border-white/15 bg-white/5 text-zinc-300 hover:bg-white/10"
                       : "border-black/10 bg-black/5 text-zinc-700 hover:bg-black/10"
                   } ${social.color}`}
@@ -134,7 +142,7 @@ export function Footer() {
           <div className="lg:col-span-3 flex items-center justify-end">
             <div className="relative h-28 sm:h-36 w-full max-w-[260px] shrink-0">
               <Image
-                src="/Rendezvous_logoall.png"
+                src={logoSrc}
                 alt="Rendezvous"
                 fill
                 sizes="(max-width: 768px) 260px, 260px"
@@ -182,7 +190,7 @@ export function Footer() {
             <div className="flex items-center justify-center">
               <div className="relative h-28 w-full max-w-[180px]">
                 <Image
-                  src="/Rendezvous_logoall.png"
+                  src={logoSrc}
                   alt="Rendezvous"
                   fill
                   sizes="180px"
@@ -206,7 +214,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label={social.name}
                   className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all hover:scale-110 active:scale-95 ${
-                    isNight
+                    effectiveNight
                       ? "border-white/15 bg-white/5 text-zinc-300 hover:bg-white/10"
                       : "border-black/10 bg-black/5 text-zinc-700 hover:bg-black/10"
                   } ${social.color}`}
@@ -222,7 +230,7 @@ export function Footer() {
         <div className="w-full overflow-hidden pt-6 select-none pointer-events-none -mb-2 sm:-mb-3 md:-mb-4">
           <svg
             viewBox="0 0 1000 130"
-            className={`w-full h-auto fill-current block ${svgFill}`}
+            className={`w-full h-auto fill-current block footer-wordmark ${svgFill}`}
             aria-label="Rendezvous"
             role="img"
           >
@@ -244,7 +252,7 @@ export function Footer() {
         </div>
 
         {/* Micro Bottom Line */}
-        <div className={`py-5 text-center text-xs ${mutedColor} border-t ${borderColor}`}>
+        <div className={`py-5 text-center text-xs ${mutedColor}`}>
           <p>© {new Date().getFullYear()} Rendezvous. All rights reserved.</p>
         </div>
       </div>
