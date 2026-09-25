@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef, useLayoutEffect } from "react";
+import React from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 // 7-card symmetric size progression (identical to Home & Restaurant Gallery)
 const GALLERY = [
@@ -87,71 +88,31 @@ function createTrapezoidPath(w: number, hLeft: number, hRight: number, r = 22) {
   ].join(" ");
 }
 
-const MOBILE_GALLERY = [...GALLERY, ...GALLERY, ...GALLERY];
+const MOBILE_SCALE = 0.8;
 
 export function LoungeGallery() {
-  const mobileTrackRef = useRef<HTMLDivElement>(null);
-  const mobileCardsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  useLayoutEffect(() => {
-    const track = mobileTrackRef.current;
-    if (!track) return;
-
-    // Start centered on Card 4 of the middle set (index 10 = middle of 21 items)
-    const middleCenterCard = mobileCardsRef.current[10];
-    if (middleCenterCard) {
-      track.scrollLeft =
-        middleCenterCard.offsetLeft +
-        middleCenterCard.offsetWidth / 2 -
-        track.clientWidth / 2;
-    }
-
-    const onScroll = () => {
-      const card0 = mobileCardsRef.current[0];
-      const card7 = mobileCardsRef.current[7];
-      if (!card0 || !card7) return;
-
-      const singleCycleWidth = card7.offsetLeft - card0.offsetLeft;
-      if (singleCycleWidth <= 0) return;
-
-      // Invisible teleport when reaching outer boundaries
-      if (track.scrollLeft < singleCycleWidth * 0.5) {
-        track.scrollLeft += singleCycleWidth;
-      } else if (track.scrollLeft > singleCycleWidth * 1.5) {
-        track.scrollLeft -= singleCycleWidth;
-      }
-    };
-
-    track.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      track.removeEventListener("scroll", onScroll);
-    };
-  }, []);
+  const [emblaRef] = useEmblaCarousel({ loop: true, align: "center" });
 
   return (
     <section id="lounge-gallery" className="pt-16 pb-12 overflow-hidden text-zinc-900" style={{ backgroundColor: "var(--bg)" }}>
       {/* SVG Clip Paths for trapezoid cards (Desktop & Mobile) */}
       <svg width="0" height="0" className="absolute pointer-events-none opacity-0" aria-hidden="true">
         <defs>
-          {GALLERY.map((item) => (
-            <React.Fragment key={item.id}>
-              {/* Desktop Clip Path */}
-              <clipPath id={`lg-card-clip-${item.id}`}>
-                <path d={createTrapezoidPath(item.w, item.hLeft, item.hRight, 22)} />
-              </clipPath>
-              {/* Mobile Clip Path (scaled ~0.8x with rounded tapered top) */}
-              <clipPath id={`lg-mobile-card-clip-${item.id}`}>
-                <path
-                  d={createTrapezoidPath(
-                    Math.round(item.w * 0.8),
-                    Math.round(item.hLeft * 0.8),
-                    Math.round(item.hRight * 0.8),
-                    18
-                  )}
-                />
-              </clipPath>
-            </React.Fragment>
-          ))}
+          {GALLERY.map((item) => {
+            const mW = Math.round(item.w * MOBILE_SCALE);
+            const mHLeft = Math.round(item.hLeft * MOBILE_SCALE);
+            const mHRight = Math.round(item.hRight * MOBILE_SCALE);
+            return (
+              <React.Fragment key={item.id}>
+                <clipPath id={`lg-card-clip-${item.id}`}>
+                  <path d={createTrapezoidPath(item.w, item.hLeft, item.hRight, 22)} />
+                </clipPath>
+                <clipPath id={`lg-mobile-card-clip-${item.id}`}>
+                  <path d={createTrapezoidPath(mW, mHLeft, mHRight, 16)} />
+                </clipPath>
+              </React.Fragment>
+            );
+          })}
         </defs>
       </svg>
 
@@ -201,31 +162,21 @@ export function LoungeGallery() {
         </p>
       </div>
 
-      {/* MOBILE TOUCH-SCROLL CAROUSEL (< 1024px) WITH SCULPTED SLOPED CARDS */}
-      <div
-        ref={mobileTrackRef}
-        className="lg:hidden w-full overflow-x-auto scrollbar-hide py-10 flex items-center select-none"
-        style={{
-          scrollSnapType: "x mandatory",
-          WebkitOverflowScrolling: "touch",
-          paddingLeft: "calc(50vw - 56px)",
-          paddingRight: "calc(50vw - 56px)",
-        }}
-      >
+      {/* ── MOBILE EMBLA CAROUSEL (< 1024px) ── */}
+      <div className="lg:hidden overflow-hidden py-8" ref={emblaRef}>
         <div className="flex items-center gap-3">
-          {MOBILE_GALLERY.map((item, idx) => {
-            const mW = Math.round(item.w * 0.8);
-            const mMaxH = Math.round(Math.max(item.hLeft, item.hRight) * 0.8);
+          {GALLERY.map((item) => {
+            const mW = Math.round(item.w * MOBILE_SCALE);
+            const mHLeft = Math.round(item.hLeft * MOBILE_SCALE);
+            const mHRight = Math.round(item.hRight * MOBILE_SCALE);
+            const mMaxH = Math.max(mHLeft, mHRight);
 
             return (
               <div
-                key={`${item.id}-${idx}`}
-                ref={(el) => {
-                  mobileCardsRef.current[idx] = el;
-                }}
-                className="flex-shrink-0 will-change-transform transition-transform duration-75 relative"
+                key={item.id}
+                className="flex-none"
                 style={{
-                  scrollSnapAlign: "center",
+                  width: `${mW}px`,
                   filter: "drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08))",
                 }}
               >
