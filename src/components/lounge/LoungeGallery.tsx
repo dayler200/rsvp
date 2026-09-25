@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import useEmblaCarousel from "embla-carousel-react";
 
 // 7-card symmetric size progression (identical to Home & Restaurant Gallery)
 const GALLERY = [
@@ -88,31 +87,17 @@ function createTrapezoidPath(w: number, hLeft: number, hRight: number, r = 22) {
   ].join(" ");
 }
 
-const MOBILE_SCALE = 0.8;
-
 export function LoungeGallery() {
-  const [emblaRef] = useEmblaCarousel({ loop: true, align: "center" });
-
   return (
     <section id="lounge-gallery" className="pt-16 pb-12 overflow-hidden text-zinc-900" style={{ backgroundColor: "var(--bg)" }}>
-      {/* SVG Clip Paths for trapezoid cards (Desktop & Mobile) */}
+      {/* SVG Clip Paths for desktop trapezoid cards */}
       <svg width="0" height="0" className="absolute pointer-events-none opacity-0" aria-hidden="true">
         <defs>
-          {GALLERY.map((item) => {
-            const mW = Math.round(item.w * MOBILE_SCALE);
-            const mHLeft = Math.round(item.hLeft * MOBILE_SCALE);
-            const mHRight = Math.round(item.hRight * MOBILE_SCALE);
-            return (
-              <React.Fragment key={item.id}>
-                <clipPath id={`lg-card-clip-${item.id}`}>
-                  <path d={createTrapezoidPath(item.w, item.hLeft, item.hRight, 22)} />
-                </clipPath>
-                <clipPath id={`lg-mobile-card-clip-${item.id}`}>
-                  <path d={createTrapezoidPath(mW, mHLeft, mHRight, 16)} />
-                </clipPath>
-              </React.Fragment>
-            );
-          })}
+          {GALLERY.map((item) => (
+            <clipPath key={item.id} id={`lg-card-clip-${item.id}`}>
+              <path d={createTrapezoidPath(item.w, item.hLeft, item.hRight, 22)} />
+            </clipPath>
+          ))}
         </defs>
       </svg>
 
@@ -136,7 +121,7 @@ export function LoungeGallery() {
           className="absolute right-[4%] lg:right-[6%] top-1 flex flex-col items-center gap-0.5 select-none pointer-events-none"
         >
           <span
-            className="text-[0.8rem] text-zinc-500 leading-snug text-center"
+            className="text-[0.8rem] text-zinc-400 leading-snug text-center"
             style={{ fontFamily: "var(--font-body)", fontStyle: "italic", maxWidth: "96px" }}
           >
             Experience<br />Rendezvous
@@ -148,73 +133,32 @@ export function LoungeGallery() {
         </div>
 
         <h2
-          className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-zinc-900 leading-[1.1]"
+          className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white leading-[1.1]"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Inside<br />Rendezvous lounge.
         </h2>
 
         <p
-          className="mt-4 text-zinc-600 text-base leading-relaxed max-w-sm mx-auto"
+          className="mt-4 text-zinc-400 text-base leading-relaxed max-w-sm mx-auto"
           style={{ fontFamily: "var(--font-body)" }}
         >
           A glimpse into the cocktails, soundscapes, and nighttime energy that define our lounge.
         </p>
       </div>
 
-      {/* ── MOBILE EMBLA CAROUSEL (< 1024px) ── */}
-      <div className="lg:hidden overflow-hidden py-8" ref={emblaRef}>
-        <div className="flex items-center gap-3">
-          {GALLERY.map((item) => {
-            const mW = Math.round(item.w * MOBILE_SCALE);
-            const mHLeft = Math.round(item.hLeft * MOBILE_SCALE);
-            const mHRight = Math.round(item.hRight * MOBILE_SCALE);
-            const mMaxH = Math.max(mHLeft, mHRight);
-
-            return (
-              <div
-                key={item.id}
-                className="flex-none"
-                style={{
-                  width: `${mW}px`,
-                  filter: "drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08))",
-                }}
-              >
-                <div
-                  style={{
-                    width: `${mW}px`,
-                    height: `${mMaxH}px`,
-                    backgroundColor: item.bg,
-                    clipPath: `url(#lg-mobile-card-clip-${item.id})`,
-                  }}
-                  className="relative overflow-hidden"
-                >
-                  {item.img && (
-                    <img
-                      src={item.img}
-                      alt={`Rendezvous Lounge ${item.id}`}
-                      className="w-full h-full object-cover pointer-events-none select-none"
-                      loading="lazy"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* DESKTOP STATIC TAPERED CURVE (>= 1024px) */}
-      <div className="w-full hidden lg:flex justify-center overflow-x-auto pb-4" style={{ scrollbarWidth: "none" }}>
-        <div className="flex items-center" style={{ gap: GAP }}>
+      {/* ── STATIC TAPERED CURVE (Identical on all screen sizes, no carousel/infinite loop) ── */}
+      <div className="w-full flex justify-center overflow-x-auto pb-4" style={{ scrollbarWidth: "none" }}>
+        <div className="flex items-center min-w-max px-4" style={{ gap: GAP }}>
           {GALLERY.map((item) => {
             const maxH = Math.max(item.hLeft, item.hRight);
             return (
               <div
                 key={item.id}
                 className="flex-shrink-0"
-                style={{ filter: "drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08))" }}
+                style={{
+                  filter: "drop-shadow(0 6px 14px rgba(0, 0, 0, 0.08))",
+                }}
               >
                 <div
                   style={{

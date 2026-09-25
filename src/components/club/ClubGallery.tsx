@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import useEmblaCarousel from "embla-carousel-react";
 
 // 7-card symmetric size progression (identical to Home, Restaurant & Lounge Galleries)
 const GALLERY = [
@@ -88,31 +87,17 @@ function createTrapezoidPath(w: number, hLeft: number, hRight: number, r = 22) {
   ].join(" ");
 }
 
-const MOBILE_SCALE = 0.8;
-
 export function ClubGallery() {
-  const [emblaRef] = useEmblaCarousel({ loop: true, align: "center" });
-
   return (
     <section id="club-gallery" className="pt-16 pb-12 overflow-hidden bg-[#0a0a0a]">
-      {/* SVG Clip Paths for trapezoid cards (Desktop & Mobile) */}
+      {/* SVG Clip Paths for desktop trapezoid cards */}
       <svg width="0" height="0" className="absolute pointer-events-none opacity-0" aria-hidden="true">
         <defs>
-          {GALLERY.map((item) => {
-            const mW = Math.round(item.w * MOBILE_SCALE);
-            const mHLeft = Math.round(item.hLeft * MOBILE_SCALE);
-            const mHRight = Math.round(item.hRight * MOBILE_SCALE);
-            return (
-              <React.Fragment key={item.id}>
-                <clipPath id={`cg-card-clip-${item.id}`}>
-                  <path d={createTrapezoidPath(item.w, item.hLeft, item.hRight, 22)} />
-                </clipPath>
-                <clipPath id={`cg-mobile-card-clip-${item.id}`}>
-                  <path d={createTrapezoidPath(mW, mHLeft, mHRight, 16)} />
-                </clipPath>
-              </React.Fragment>
-            );
-          })}
+          {GALLERY.map((item) => (
+            <clipPath key={item.id} id={`cg-card-clip-${item.id}`}>
+              <path d={createTrapezoidPath(item.w, item.hLeft, item.hRight, 22)} />
+            </clipPath>
+          ))}
         </defs>
       </svg>
 
@@ -162,59 +147,18 @@ export function ClubGallery() {
         </p>
       </div>
 
-      {/* ── MOBILE EMBLA CAROUSEL (< 1024px) ── */}
-      <div className="lg:hidden overflow-hidden py-8" ref={emblaRef}>
-        <div className="flex items-center gap-3">
-          {GALLERY.map((item) => {
-            const mW = Math.round(item.w * MOBILE_SCALE);
-            const mHLeft = Math.round(item.hLeft * MOBILE_SCALE);
-            const mHRight = Math.round(item.hRight * MOBILE_SCALE);
-            const mMaxH = Math.max(mHLeft, mHRight);
-
-            return (
-              <div
-                key={item.id}
-                className="flex-none"
-                style={{
-                  width: `${mW}px`,
-                  filter: "drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4))",
-                }}
-              >
-                <div
-                  style={{
-                    width: `${mW}px`,
-                    height: `${mMaxH}px`,
-                    backgroundColor: item.bg,
-                    clipPath: `url(#cg-mobile-card-clip-${item.id})`,
-                  }}
-                  className="relative overflow-hidden"
-                >
-                  {item.img && (
-                    <img
-                      src={item.img}
-                      alt={`Rendezvous Club ${item.id}`}
-                      className="w-full h-full object-cover pointer-events-none select-none"
-                      loading="lazy"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* DESKTOP STATIC TAPERED CURVE (>= 1024px) */}
-      <div className="w-full hidden lg:flex justify-center overflow-x-auto pb-4" style={{ scrollbarWidth: "none" }}>
-        <div className="flex items-center" style={{ gap: GAP }}>
+      {/* ── STATIC TAPERED CURVE (Identical on all screen sizes, no carousel/infinite loop) ── */}
+      <div className="w-full flex justify-center overflow-x-auto pb-4" style={{ scrollbarWidth: "none" }}>
+        <div className="flex items-center min-w-max px-4" style={{ gap: GAP }}>
           {GALLERY.map((item) => {
             const maxH = Math.max(item.hLeft, item.hRight);
             return (
               <div
                 key={item.id}
                 className="flex-shrink-0"
-                style={{ filter: "drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4))" }}
+                style={{
+                  filter: "drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4))",
+                }}
               >
                 <div
                   style={{
