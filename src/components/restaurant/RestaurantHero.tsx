@@ -23,7 +23,7 @@ export function RestaurantHero() {
             >
               <Image
                 src="/bugger1.png"
-                alt="Rendezvous artisanal burger"
+                alt="RSVP artisanal burger"
                 fill
                 priority
                 sizes="(max-width: 640px) 45vw, (max-width: 1024px) 40vw, 440px"
@@ -40,7 +40,7 @@ export function RestaurantHero() {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <span className="inline-block text-[0.65rem] sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest text-[#9c0200] mb-2 sm:mb-3">
-                The Restaurant • Rendezvous
+                The Restaurant • RSVP
               </span>
             </motion.div>
 

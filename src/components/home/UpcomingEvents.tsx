@@ -93,7 +93,7 @@ export function UpcomingEvents() {
             Calendar & Evenings
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-2">
-            What&apos;s on at Rendezvous.
+            What&apos;s on at RSVP.
           </h2>
         </div>
 
@@ -214,7 +214,7 @@ export function UpcomingEvents() {
                   </Link>
                   <a
                     href={`https://wa.me/265882767664?text=${encodeURIComponent(
-                      `Hi Rendezvous, I would like to RSVP for "${event.title}" on ${event.dateFormatted}.`
+                      `Hi RSVP, I would like to RSVP for "${event.title}" on ${event.dateFormatted}.`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"

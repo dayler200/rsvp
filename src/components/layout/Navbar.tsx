@@ -95,10 +95,10 @@ export function Navbar() {
           className={`pointer-events-auto flex items-center justify-between gap-6 px-6 py-2.5 rounded-2xl transition-all duration-300 w-full max-w-5xl border-0 border-none shadow-none ${
             isScrolled
               ? isNight
-                ? "bg-[#0a0a0a]/90 backdrop-blur-md"
+                ? "bg-[#05141f]/90 backdrop-blur-md"
                 : "bg-white/90 backdrop-blur-md"
               : isNight
-              ? "bg-[#0a0a0a]/60 backdrop-blur-sm"
+              ? "bg-[#05141f]/60 backdrop-blur-sm"
               : "bg-white/60 backdrop-blur-sm"
           }`}
         >
@@ -109,8 +109,8 @@ export function Navbar() {
           >
             <div className="relative h-10 w-36">
               <Image
-                src="/Rendezvous_logo.png"
-                alt="Rendezvous"
+                src="/rsvp_logo1.png"
+                alt="RSVP"
                 fill
                 sizes="144px"
                 className="object-contain object-left"
@@ -164,17 +164,17 @@ export function Navbar() {
           className={`pointer-events-auto flex items-center justify-between px-4 py-2 rounded-2xl transition-all duration-300 w-full max-w-md border-0 border-none shadow-none ${
             isScrolled || mobileMenuOpen
               ? isNight
-                ? "bg-[#0a0a0a]/90 backdrop-blur-md"
+                ? "bg-[#05141f]/90 backdrop-blur-md"
                 : "bg-white/90 backdrop-blur-md"
               : isNight
-              ? "bg-[#0a0a0a]/75 backdrop-blur-sm"
+              ? "bg-[#05141f]/75 backdrop-blur-sm"
               : "bg-white/75 backdrop-blur-sm"
           }`}
         >
           <Link href="/" className="relative h-8 w-28">
             <Image
-              src="/Rendezvous_logo.png"
-              alt="Rendezvous"
+              src="/rsvp_logo1.png"
+              alt="RSVP"
               fill
               sizes="112px"
               className="object-contain object-left"
@@ -210,7 +210,7 @@ export function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className={`lg:hidden fixed inset-0 z-40 flex flex-col justify-between pt-24 pb-8 px-6 overflow-y-auto ${
-              isNight ? "bg-[#0a0a0a] text-white" : "bg-[#f5f5f5] text-[#0a0a0a]"
+              isNight ? "bg-[#05141f] text-white" : "bg-[#f5f5f5] text-[#05141f]"
             }`}
           >
             {/* Nav list */}
@@ -220,7 +220,7 @@ export function Navbar() {
                   isNight ? "text-zinc-400" : "text-zinc-500"
                 }`}
               >
-                Explore Rendezvous
+                Explore RSVP
               </span>
 
               {NAV_LINKS.map((link, idx) => {

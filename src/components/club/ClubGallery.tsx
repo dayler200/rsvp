@@ -89,7 +89,7 @@ function createTrapezoidPath(w: number, hLeft: number, hRight: number, r = 22) {
 
 export function ClubGallery() {
   return (
-    <section id="club-gallery" className="pt-16 pb-12 overflow-hidden bg-[#0a0a0a]">
+    <section id="club-gallery" className="pt-16 pb-12 overflow-hidden bg-[#05141f]">
       {/* SVG Clip Paths for desktop trapezoid cards */}
       <svg width="0" height="0" className="absolute pointer-events-none opacity-0" aria-hidden="true">
         <defs>
@@ -124,7 +124,7 @@ export function ClubGallery() {
             className="text-[0.8rem] text-zinc-400 leading-snug text-center"
             style={{ fontFamily: "var(--font-body)", fontStyle: "italic", maxWidth: "96px" }}
           >
-            Experience<br />Rendezvous
+            Experience<br />RSVP
           </span>
           <svg width="38" height="28" viewBox="0 0 38 28" fill="none" aria-hidden className="text-[#9c0200]">
             <path d="M33 3 C22 3, 7 9, 5 24" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" fill="none" />
@@ -136,7 +136,7 @@ export function ClubGallery() {
           className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white leading-[1.1]"
           style={{ fontFamily: "var(--font-heading)" }}
         >
-          Inside<br />Rendezvous club.
+          Inside<br />RSVP club.
         </h2>
 
         <p
@@ -172,7 +172,7 @@ export function ClubGallery() {
                   {item.img && (
                     <img
                       src={item.img}
-                      alt={`Rendezvous Club ${item.id}`}
+                      alt={`RSVP Club ${item.id}`}
                       className="w-full h-full object-cover"
                     />
                   )}

@@ -65,15 +65,15 @@ export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
   // directly. Only isNight (time-based) needs the mounted guard to avoid SSR
   // hydration mismatches.
   const logoSrc = forceDark
-    ? "/allwhitelogo.png"
-    : (mounted && isNight ? "/allwhitelogo.png" : "/Rendezvous_logoall.png");
+    ? "/rsvp_logowhite.png"
+    : (mounted && isNight ? "/rsvp_logowhite.png" : "/rsvp_logoblack.png");
 
   const linkColor   = effectiveNight ? "text-zinc-300 hover:text-[#fd2006]" : "text-zinc-700 hover:text-[#fd2006]";
   const mutedColor  = effectiveNight ? "text-zinc-400" : "text-zinc-400";
   const brandText   = effectiveNight ? "text-zinc-100" : "text-zinc-800";
   const svgFill     = effectiveNight ? "text-white fill-white" : "text-zinc-950 fill-zinc-950";
   const borderColor = effectiveNight ? "border-zinc-800" : "border-zinc-200/80";
-  const bg          = effectiveNight ? "bg-[#0a0a0a] text-zinc-100" : "bg-white text-zinc-900";
+  const bg          = effectiveNight ? "bg-[#05141f] text-zinc-100" : "bg-white text-zinc-900";
 
   return (
     <footer className={`w-full pt-16 pb-0 overflow-hidden ${bg} ${forceDark ? "force-dark" : ""}`}>
@@ -85,7 +85,7 @@ export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <p className={`text-xl sm:text-2xl font-semibold tracking-tight leading-snug max-w-sm ${brandText}`}>
-                Rendezvous is Blantyre&apos;s premier restaurant, lounge, and club crafted for elevated dining and vibrant nightlife.
+                RSVP is Blantyre&apos;s premier restaurant, lounge, and club crafted for elevated dining and vibrant nightlife.
               </p>
             </div>
             <div className={`mt-6 flex items-center gap-2 text-xs font-medium ${mutedColor}`}>
@@ -143,7 +143,7 @@ export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
             <div className="relative h-28 sm:h-36 w-full max-w-[260px] shrink-0">
               <Image
                 src={logoSrc}
-                alt="Rendezvous"
+                alt="RSVP"
                 fill
                 sizes="(max-width: 768px) 260px, 260px"
                 className="object-contain object-right"
@@ -157,7 +157,7 @@ export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
           {/* Brand Statement */}
           <div>
             <p className={`text-xl font-semibold tracking-tight leading-snug ${brandText}`}>
-              Rendezvous is Blantyre&apos;s premier restaurant, lounge, and club crafted for elevated dining and vibrant nightlife.
+              RSVP is Blantyre&apos;s premier restaurant, lounge, and club crafted for elevated dining and vibrant nightlife.
             </p>
             <div className={`mt-4 flex flex-wrap items-center gap-2 text-xs font-medium ${mutedColor}`}>
               <FontAwesomeIcon icon={faLocationDot} className="w-3.5 h-3.5 text-[#fd2006]" />
@@ -191,7 +191,7 @@ export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
               <div className="relative h-28 w-full max-w-[180px]">
                 <Image
                   src={logoSrc}
-                  alt="Rendezvous"
+                  alt="RSVP"
                   fill
                   sizes="180px"
                   className="object-contain object-center"
@@ -231,7 +231,7 @@ export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
           <svg
             viewBox="0 0 1000 130"
             className={`w-full h-auto fill-current block footer-wordmark ${svgFill}`}
-            aria-label="Rendezvous"
+            aria-label="RSVP"
             role="img"
           >
             <text
@@ -246,14 +246,14 @@ export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
                 fontSize: "155px",
               }}
             >
-              rendezvous
+              rsvp
             </text>
           </svg>
         </div>
 
         {/* Micro Bottom Line */}
         <div className={`py-5 text-center text-xs ${mutedColor}`}>
-          <p>© {new Date().getFullYear()} Rendezvous. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} RSVP. All rights reserved.</p>
         </div>
       </div>
     </footer>

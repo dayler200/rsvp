@@ -22,12 +22,12 @@ export function RestaurantContent() {
       style={
         {
           "--bg": "#fcfcfc",
-          "--text": "#0a0a0a",
+          "--text": "#05141f",
           "--text-muted": "#555555",
           "--surface": "#ffffff",
           "--border": "#e5e5e5",
           backgroundColor: "#fcfcfc",
-          color: "#0a0a0a",
+          color: "#05141f",
         } as React.CSSProperties
       }
     >

@@ -8,18 +8,18 @@ import { ReservationTeaser } from "@/components/home/ReservationTeaser";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Rendezvous Exclusive | Restaurant, Lounge & Club — Blantyre",
+  title: "RSVP Exclusive | Restaurant, Lounge & Club — Blantyre",
   description:
-    "Step into Blantyre's premier dining and nightlife destination. Reserve your experience at Rendezvous Exclusive Restaurant, Lounge, or Club.",
+    "Step into Blantyre's premier dining and nightlife destination. Reserve your experience at RSVP Exclusive Restaurant, Lounge, or Club.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Rendezvous Exclusive | Restaurant, Lounge & Club — Blantyre",
+    title: "RSVP Exclusive | Restaurant, Lounge & Club — Blantyre",
     description:
-      "Step into Blantyre's premier dining and nightlife destination. Reserve your experience at Rendezvous Exclusive Restaurant, Lounge, or Club.",
+      "Step into Blantyre's premier dining and nightlife destination. Reserve your experience at RSVP Exclusive Restaurant, Lounge, or Club.",
     url: "/",
-    images: [{ url: "/ogimage.jpg", width: 1200, height: 630, alt: "Rendezvous Exclusive Blantyre" }],
+    images: [{ url: "/ogimage.jpg", width: 1200, height: 630, alt: "RSVP Exclusive Blantyre" }],
   },
 };
 

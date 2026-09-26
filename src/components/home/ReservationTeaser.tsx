@@ -45,7 +45,7 @@ export function ReservationTeaser() {
       lounge: "The Lounge",
       club: "The Club (VIP Booth)",
     };
-    const text = `Hi Rendezvous, I would like to reserve a table:\n- Name: ${formData.name || "Guest"}\n- Space: ${spaceNames[formData.space] || formData.space}\n- Guests: ${formData.guests}\n- Date: ${formData.date || "Upcoming"}\n- Time: ${formData.time}\n- Phone: ${formData.phone || "N/A"}${formData.notes ? `\n- Notes: ${formData.notes}` : ""}`;
+    const text = `Hi RSVP, I would like to reserve a table:\n- Name: ${formData.name || "Guest"}\n- Space: ${spaceNames[formData.space] || formData.space}\n- Guests: ${formData.guests}\n- Date: ${formData.date || "Upcoming"}\n- Time: ${formData.time}\n- Phone: ${formData.phone || "N/A"}${formData.notes ? `\n- Notes: ${formData.notes}` : ""}`;
     return `https://wa.me/265882767664?text=${encodeURIComponent(text)}`;
   };
 
@@ -74,7 +74,7 @@ export function ReservationTeaser() {
           <div className="relative flex-1 rounded-3xl overflow-hidden min-h-[220px]">
             <Image
               src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1000&auto=format&fit=crop"
-              alt="Rendezvous dining experience"
+              alt="RSVP dining experience"
               fill
               sizes="(max-width: 1024px) 100vw, 42vw"
               className="object-cover object-center"

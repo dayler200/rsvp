@@ -70,7 +70,7 @@ export function LoungeExperience() {
           transition={{ duration: 0.6, ease: EASE, delay: 0.15 }}
           className={`mt-3 sm:mt-4 text-xs sm:text-base leading-relaxed ${muted}`}
         >
-          Whether meeting for sunset drinks or staying through the late-night groove, every element is designed to elevate your time at Rendezvous.
+          Whether meeting for sunset drinks or staying through the late-night groove, every element is designed to elevate your time at RSVP.
         </motion.p>
       </div>
 

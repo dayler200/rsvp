@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 
 export function ClubStatement() {
   return (
-    <section className="relative w-full min-h-[480px] sm:min-h-[560px] md:min-h-[640px] flex items-center overflow-hidden bg-[#0a0a0a]">
+    <section className="relative w-full min-h-[480px] sm:min-h-[560px] md:min-h-[640px] flex items-center overflow-hidden bg-[#05141f]">
       {/* ── FULL-WIDTH BACKGROUND IMAGE (using public/hero.jpg) ── */}
       <div className="absolute inset-0 -top-6 sm:top-0 z-0 overflow-hidden">
         <Image
           src="/hero.jpg"
-          alt="Rendezvous Nightlife Experience"
+          alt="RSVP Nightlife Experience"
           fill
           unoptimized
           priority
@@ -25,25 +25,25 @@ export function ClubStatement() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.4) 75%, rgba(10,10,10,0.15) 100%)",
+              "linear-gradient(to right, rgba(5,20,31,0.97) 0%, rgba(5,20,31,0.85) 45%, rgba(5,20,31,0.4) 75%, rgba(5,20,31,0.15) 100%)",
           }}
         />
 
-        {/* ── SEAMLESS TOP BLACK FADE ── */}
+        {/* ── SEAMLESS TOP FADE ── */}
         <div
           className="absolute top-0 left-0 right-0 h-44 sm:h-64 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to bottom, #0a0a0a 0%, rgba(10,10,10,0.85) 35%, rgba(10,10,10,0.3) 70%, transparent 100%)",
+              "linear-gradient(to bottom, #05141f 0%, rgba(5,20,31,0.85) 35%, rgba(5,20,31,0.3) 70%, transparent 100%)",
           }}
         />
 
-        {/* ── SEAMLESS BOTTOM BLACK FADE ── */}
+        {/* ── SEAMLESS BOTTOM FADE ── */}
         <div
           className="absolute bottom-0 left-0 right-0 h-28 sm:h-40 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.5) 40%, rgba(10,10,10,0.9) 80%, #0a0a0a 100%)",
+              "linear-gradient(to bottom, transparent 0%, rgba(5,20,31,0.5) 40%, rgba(5,20,31,0.9) 80%, #05141f 100%)",
           }}
         />
       </div>
@@ -62,7 +62,7 @@ export function ClubStatement() {
           </h2>
 
           <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-lg">
-            Every night at Rendezvous Club is a curated experience with world-class resident DJs,
+            Every night at RSVP Club is a curated experience with world-class resident DJs,
             state-of-the-art acoustic design, immersive lighting, and a crowd that lives for the sound.
             Step through the doors and let the rhythm carry you through till sunrise.
           </p>

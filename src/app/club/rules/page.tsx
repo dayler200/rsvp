@@ -23,10 +23,10 @@ export default function ClubRulesPage() {
 
   return (
     <div
-      className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5]"
+      className="min-h-screen bg-[#05141f] text-[#f5f5f5]"
       style={
         {
-          "--bg": "#0a0a0a",
+          "--bg": "#05141f",
           "--text": "#f5f5f5",
           "--text-muted": "#aaaaaa",
           "--surface": "#111111",
@@ -56,8 +56,8 @@ export default function ClubRulesPage() {
           {/* Logo */}
           <div className="relative w-40 sm:w-48 h-16 sm:h-20 mb-4">
             <Image
-              src="/Rendezvous_logo.png"
-              alt="Rendezvous Exclusive"
+              src="/rsvp_logo1.png"
+              alt="RSVP Exclusive"
               fill
               className="object-contain"
               priority
@@ -65,7 +65,7 @@ export default function ClubRulesPage() {
           </div>
 
           <span className="text-[11px] sm:text-xs uppercase tracking-[0.35em] font-semibold text-zinc-400 mb-2">
-            Rendezvous Exclusive • Restaurant, Lounge &amp; Club
+            RSVP Exclusive • Restaurant, Lounge &amp; Club
           </span>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#9c0200] mt-1">
@@ -73,7 +73,7 @@ export default function ClubRulesPage() {
           </h1>
 
           <p className="mt-4 max-w-xl text-xs sm:text-sm text-zinc-400 leading-relaxed">
-            To ensure an elevated, safe, and world-class atmosphere for all patrons, Rendezvous
+            To ensure an elevated, safe, and world-class atmosphere for all patrons, RSVP
             operates under strict house rules. Please review our entry and conduct guidelines below.
           </p>
         </motion.div>
@@ -254,7 +254,7 @@ export default function ClubRulesPage() {
             </h2>
             <div className="text-sm sm:text-base text-zinc-200 leading-relaxed">
               <span className="font-bold text-[#9c0200]">Crowd Footage: </span>
-              By entering Rendezvous, you consent to being photographed, filmed, and recorded as part of the crowd. Media may be used across our official marketing and social channels.
+              By entering RSVP, you consent to being photographed, filmed, and recorded as part of the crowd. Media may be used across our official marketing and social channels.
             </div>
           </motion.div>
 
@@ -263,10 +263,10 @@ export default function ClubRulesPage() {
         {/* ── FOOTER BAR NOTE ── */}
         <div className="mt-12 sm:mt-16 text-center flex flex-col items-center gap-3 border-t border-zinc-800 pt-8">
           <p className="text-xs uppercase tracking-widest font-semibold text-zinc-400">
-            Follow us: <span className="text-white">@RendezvousExclusive</span>
+            Follow us: <span className="text-white">@RSVPExclusive</span>
           </p>
           <p className="text-[11px] text-zinc-500">
-            Terms &amp; Conditions Apply • Rendezvous Exclusive Management Reserves All Rights.
+            Terms &amp; Conditions Apply • RSVP Exclusive Management Reserves All Rights.
           </p>
         </div>
       </main>

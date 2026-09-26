@@ -29,13 +29,13 @@ export function RestaurantFeatures() {
 
             <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm md:text-base text-zinc-700 leading-relaxed font-normal">
               <p>
-                Rendezvous Restaurant was founded with a singular ambition: to redefine dining in Malawi by combining contemporary gastronomy with the timeless warmth of open-fire hospitality.
+                RSVP Restaurant was founded with a singular ambition: to redefine dining in Malawi by combining contemporary gastronomy with the timeless warmth of open-fire hospitality.
               </p>
               <p>
                 Every morning, our kitchen comes alive with farm-fresh herbs, highland greens, and prime cuts hand-selected from trusted regional producers. Over glowing woodfire coals, our culinary team transforms premium ingredients into plates that celebrate flavor, balance, and artistry.
               </p>
               <p className="text-zinc-600">
-                Whether you are joining us for an unhurried afternoon lunch or an intimate dinner gathering, Rendezvous provides an inviting sanctuary where every meal becomes a memorable occasion.
+                Whether you are joining us for an unhurried afternoon lunch or an intimate dinner gathering, RSVP provides an inviting sanctuary where every meal becomes a memorable occasion.
               </p>
             </div>
           </motion.div>

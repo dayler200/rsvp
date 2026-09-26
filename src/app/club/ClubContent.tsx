@@ -27,10 +27,10 @@ export function ClubContent() {
 
   return (
     <div
-      className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5]"
+      className="min-h-screen bg-[#05141f] text-[#f5f5f5]"
       style={
         {
-          "--bg": "#0a0a0a",
+          "--bg": "#05141f",
           "--text": "#f5f5f5",
           "--text-muted": "#aaaaaa",
           "--surface": "#111111",

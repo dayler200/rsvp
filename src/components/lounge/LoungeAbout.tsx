@@ -32,7 +32,7 @@ export function LoungeAbout() {
           >
             <Image
               src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=800&auto=format&fit=crop"
-              alt="Rendezvous Lounge cocktails"
+              alt="RSVP Lounge cocktails"
               fill
               sizes="(max-width: 1024px) 100vw, 42vw"
               className="object-cover object-center"
@@ -49,7 +49,7 @@ export function LoungeAbout() {
           >
             <Image
               src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=800&auto=format&fit=crop"
-              alt="Rendezvous Lounge ambient seating"
+              alt="RSVP Lounge ambient seating"
               fill
               sizes="(max-width: 1024px) 100vw, 42vw"
               className="object-cover object-center"

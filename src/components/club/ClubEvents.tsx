@@ -39,7 +39,7 @@ const TRACK = [...WEEKLY_NIGHTS, ...WEEKLY_NIGHTS, ...WEEKLY_NIGHTS];
 
 export function ClubEvents() {
   return (
-    <section id="events" className="bg-[#0a0a0a] pt-4 sm:pt-8 pb-16 sm:pb-20 overflow-hidden">
+    <section id="events" className="bg-[#05141f] pt-4 sm:pt-8 pb-16 sm:pb-20 overflow-hidden">
       <style>{`
         @keyframes weeklyNightsMarquee {
           0% {

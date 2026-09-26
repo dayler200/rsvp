@@ -28,7 +28,7 @@ export function Hero() {
               <div
                 className="absolute inset-0 opacity-40"
                 style={{
-                  backgroundImage: `radial-gradient(#0a0a0a 1px, transparent 1px), radial-gradient(#9c0200 1px, transparent 1px)`,
+                  backgroundImage: `radial-gradient(#05141f 1px, transparent 1px), radial-gradient(#9c0200 1px, transparent 1px)`,
                   backgroundSize: "40px 40px",
                   backgroundPosition: "0 0, 20px 20px",
                 }}
@@ -43,7 +43,7 @@ export function Hero() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.8 }}
-              className="absolute inset-0 bg-[#0a0a0a]"
+              className="absolute inset-0 bg-[#05141f]"
             >
               {/* Night Lounge & Club Mood — Sharp, deep, midnight aesthetic */}
               <div
@@ -54,7 +54,7 @@ export function Hero() {
                   backgroundPosition: "0 0, 18px 18px",
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/85 to-[#0a0a0a]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#05141f]/90 via-[#05141f]/85 to-[#05141f]" />
               <div className="absolute -top-24 right-10 w-[480px] h-[480px] rounded-full bg-gradient-to-br from-[#9c0200]/25 to-transparent blur-3xl pointer-events-none" />
             </motion.div>
           )}
@@ -108,7 +108,7 @@ export function Hero() {
                 Nightlife • Bottle Service • Sound
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white max-w-3xl leading-[1.08]">
-                Tonight at <span className="text-[#fd2006]">Rendezvous</span>.
+                Tonight at <span className="text-[#fd2006]">RSVP</span>.
               </h1>
               <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-300 max-w-xl font-normal leading-relaxed">
                 Malawi’s premier sound systems, elite resident DJs, signature mixology, and VIP booths built for celebration.

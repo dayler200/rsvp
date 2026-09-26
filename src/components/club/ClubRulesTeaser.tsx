@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export function ClubRulesTeaser() {
   return (
-    <section className="bg-[#0a0a0a] py-16 sm:py-24 overflow-hidden">
+    <section className="bg-[#05141f] py-16 sm:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 lg:gap-16 items-center">
           {/* ── IMAGE: Natural aspect ratio, NO gradient overlay as requested ── */}
@@ -20,7 +20,7 @@ export function ClubRulesTeaser() {
           >
             <Image
               src="/other.jpg"
-              alt="Rendezvous Nightlife Experience"
+              alt="RSVP Nightlife Experience"
               fill
               unoptimized
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -41,7 +41,7 @@ export function ClubRulesTeaser() {
             </h2>
 
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-lg">
-              To maintain our premier atmosphere, Rendezvous Exclusive operates a strict dress code,
+              To maintain our premier atmosphere, RSVP Exclusive operates a strict dress code,
               code of conduct, and 18+ policy. Ensure your night goes smoothly by reviewing our
               guidelines before your visit.
             </p>

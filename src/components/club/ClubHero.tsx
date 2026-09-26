@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export function ClubHero() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+    <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-[#05141f]">
       {/* ── VIDEO BACKGROUND (using public/hero.mp4) ── */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
@@ -24,7 +24,7 @@ export function ClubHero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.45) 40%, rgba(10,10,10,0.85) 100%)",
+              "linear-gradient(to bottom, rgba(5,20,31,0.6) 0%, rgba(5,20,31,0.45) 40%, rgba(5,20,31,0.85) 100%)",
           }}
         />
       </div>
@@ -69,12 +69,12 @@ export function ClubHero() {
         </motion.div>
       </div>
 
-      {/* ── PURE BLACK SEAMLESS BOTTOM FADE ── */}
+      {/* ── SEAMLESS BOTTOM FADE ── */}
       <div
         className="absolute bottom-0 left-0 right-0 h-44 sm:h-64 pointer-events-none z-10"
         style={{
           background:
-            "linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.4) 30%, rgba(10,10,10,0.85) 70%, #0a0a0a 100%)",
+            "linear-gradient(to bottom, transparent 0%, rgba(5,20,31,0.4) 30%, rgba(5,20,31,0.85) 70%, #05141f 100%)",
         }}
       />
     </section>

@@ -134,7 +134,7 @@ export function Gallery() {
             className="text-[0.8rem] text-[var(--text-muted)] leading-snug text-center"
             style={{ fontFamily: "var(--font-body)", fontStyle: "italic", maxWidth: "96px" }}
           >
-            Experience<br />Rendezvous
+            Experience<br />RSVP
           </span>
           <svg width="38" height="28" viewBox="0 0 38 28" fill="none" aria-hidden className="text-zinc-400">
             <path d="M33 3 C22 3, 7 9, 5 24" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" fill="none" />
@@ -185,7 +185,7 @@ export function Gallery() {
                   {item.img && (
                     <img
                       src={item.img}
-                      alt={`Rendezvous Gallery ${item.id}`}
+                      alt={`RSVP Gallery ${item.id}`}
                       className="w-full h-full object-cover"
                     />
                   )}

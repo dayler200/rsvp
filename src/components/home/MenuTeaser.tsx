@@ -42,7 +42,7 @@ export function MenuTeaser() {
         >
           <Image
             src="/bugger1.png"
-            alt="Rendezvous signature burger"
+            alt="RSVP signature burger"
             fill
             sizes="30vw"
             className="object-contain object-top drop-shadow-2xl"
@@ -64,7 +64,7 @@ export function MenuTeaser() {
 
           <p className="text-[var(--text-muted)] text-xs sm:text-sm leading-relaxed max-w-[260px] sm:max-w-[300px] lg:max-w-[340px]">
             From flame-grilled signatures to handcrafted cocktails, every plate
-            and glass at Rendezvous tells a story worth savouring.
+            and glass at RSVP tells a story worth savouring.
           </p>
 
           {/* Coming soon — menu page not yet built */}
@@ -81,7 +81,7 @@ export function MenuTeaser() {
         >
           <Image
             src="/waiter.png"
-            alt="Rendezvous chef presenting a dish"
+            alt="RSVP chef presenting a dish"
             fill
             sizes="50vw"
             className="object-contain object-bottom drop-shadow-xl"
@@ -104,7 +104,7 @@ export function MenuTeaser() {
         >
           <Image
             src="/waiter.png"
-            alt="Rendezvous chef presenting a dish"
+            alt="RSVP chef presenting a dish"
             fill
             sizes="30vw"
             className="object-contain object-bottom drop-shadow-2xl"

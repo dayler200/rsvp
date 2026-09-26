@@ -39,7 +39,7 @@ export function LoungeHero() {
             transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
             className={`text-xs sm:text-sm md:text-base leading-relaxed max-w-md ${muted}`}
           >
-            The Lounge at Rendezvous. Crafted cocktails, warm light, and the
+            The Lounge at RSVP. Crafted cocktails, warm light, and the
             kind of music that makes time disappear.
           </motion.p>
 
@@ -67,7 +67,7 @@ export function LoungeHero() {
         >
           <Image
             src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1200&auto=format&fit=crop"
-            alt="Rendezvous Lounge interior"
+            alt="RSVP Lounge interior"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"

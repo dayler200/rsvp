@@ -23,12 +23,12 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://rendezvous.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://rsvp.com";
 
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fcfcfc" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: dark)", color: "#05141f" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -38,18 +38,18 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Rendezvous Exclusive | Restaurant, Lounge & Club — Blantyre",
-    template: "%s | Rendezvous Exclusive",
+    default: "RSVP Exclusive | Restaurant, Lounge & Club — Blantyre",
+    template: "%s | RSVP Exclusive",
   },
   description:
-    "Blantyre's premier dining and nightlife destination. Experience signature fine dining, handcrafted cocktails, ambient soundscapes, and high-energy club nights at Rendezvous Exclusive.",
-  applicationName: "Rendezvous Exclusive",
-  authors: [{ name: "Rendezvous Exclusive", url: siteUrl }],
-  creator: "Rendezvous Exclusive",
-  publisher: "Rendezvous Exclusive",
+    "Blantyre's premier dining and nightlife destination. Experience signature fine dining, handcrafted cocktails, ambient soundscapes, and high-energy club nights at RSVP Exclusive.",
+  applicationName: "RSVP Exclusive",
+  authors: [{ name: "RSVP Exclusive", url: siteUrl }],
+  creator: "RSVP Exclusive",
+  publisher: "RSVP Exclusive",
   keywords: [
-    "Rendezvous Exclusive",
-    "Rendezvous Blantyre",
+    "RSVP Exclusive",
+    "RSVP Blantyre",
     "Restaurant in Blantyre",
     "Club in Blantyre",
     "Lounge in Blantyre",
@@ -66,8 +66,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Rendezvous Exclusive",
-    title: "Rendezvous Exclusive | Restaurant, Lounge & Club — Blantyre",
+    siteName: "RSVP Exclusive",
+    title: "RSVP Exclusive | Restaurant, Lounge & Club — Blantyre",
     description:
       "Blantyre's premier dining and nightlife destination. Experience signature fine dining, handcrafted cocktails, ambient soundscapes, and high-energy club nights.",
     images: [
@@ -75,18 +75,18 @@ export const metadata: Metadata = {
         url: "/ogimage.jpg",
         width: 1200,
         height: 630,
-        alt: "Rendezvous Exclusive — Restaurant, Lounge & Club in Blantyre",
+        alt: "RSVP Exclusive — Restaurant, Lounge & Club in Blantyre",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rendezvous Exclusive | Restaurant, Lounge & Club — Blantyre",
+    title: "RSVP Exclusive | Restaurant, Lounge & Club — Blantyre",
     description:
-      "Blantyre's premier dining and nightlife destination. Book your table at Rendezvous Exclusive Restaurant, Lounge or Club.",
+      "Blantyre's premier dining and nightlife destination. Book your table at RSVP Exclusive Restaurant, Lounge or Club.",
     images: ["/ogimage.jpg"],
-    creator: "@RendezvousMW",
+    creator: "@RSVPExclusive",
   },
   icons: {
     icon: [
@@ -115,10 +115,10 @@ const jsonLd = {
     {
       "@type": ["Restaurant", "NightClub", "BarOrPub"],
       "@id": `${siteUrl}/#organization`,
-      name: "Rendezvous Exclusive",
-      alternateName: "Rendezvous",
+      name: "RSVP Exclusive",
+      alternateName: "RSVP",
       url: siteUrl,
-      logo: `${siteUrl}/allwhitelogo.png`,
+      logo: `${siteUrl}/rsvp_logo1.png`,
       image: `${siteUrl}/ogimage.jpg`,
       description:
         "Blantyre's premier dining and nightlife destination featuring a fine dining restaurant, sophisticated cocktail lounge, and electric nightclub.",

@@ -10,12 +10,12 @@ import { Footer } from "@/components/layout/Footer";
 export const metadata: Metadata = {
   title: "The Lounge | Cocktails, Ambiance & Social Vibes",
   description:
-    "Unwind at Rendezvous Exclusive Lounge in Blantyre. Signature craft cocktails, ambient soundscapes, sunset views, and luxurious social seating.",
+    "Unwind at RSVP Exclusive Lounge in Blantyre. Signature craft cocktails, ambient soundscapes, sunset views, and luxurious social seating.",
   alternates: {
     canonical: "/lounge",
   },
   openGraph: {
-    title: "The Lounge | Cocktails & Vibes — Rendezvous Exclusive",
+    title: "The Lounge | Cocktails & Vibes — RSVP Exclusive",
     description:
       "Signature craft cocktails, ambient soundscapes, sunset views, and luxurious social seating in Blantyre.",
     url: "/lounge",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: "/ogimage.jpg",
         width: 1200,
         height: 630,
-        alt: "Rendezvous Exclusive Lounge — Cocktails & Ambiance in Blantyre",
+        alt: "RSVP Exclusive Lounge — Cocktails & Ambiance in Blantyre",
       },
     ],
   },

@@ -53,7 +53,7 @@ export function WhoWeAre() {
             transition={{ duration: 0.55, ease: EASE_OUT, delay: 0.16 }}
             className={`text-base sm:text-lg leading-relaxed ${muted}`}
           >
-            Rendezvous is more than a destination; it is Blantyre&apos;s premier
+            RSVP is more than a destination; it is Blantyre&apos;s premier
             living room by day and vibrant cultural pulse after dark.
           </motion.p>
 
@@ -81,7 +81,7 @@ export function WhoWeAre() {
         >
           <Image
             src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=1000&auto=format&fit=crop"
-            alt="Rendezvous Venue Ambience"
+            alt="RSVP Venue Ambience"
             fill
             sizes="(max-width: 1024px) 100vw, 42vw"
             className="object-cover object-center"

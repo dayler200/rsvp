@@ -15,7 +15,7 @@ export function RestaurantBento() {
           <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-[#f0ecf5] h-40 sm:h-60 md:h-72 lg:h-80 flex items-end justify-center">
             <Image
               src="/waiter.png"
-              alt="Rendezvous service and hospitality"
+              alt="RSVP service and hospitality"
               fill
               sizes="(max-width: 640px) 25vw, 20vw"
               className="object-contain object-bottom drop-shadow-md select-none"
@@ -53,7 +53,7 @@ export function RestaurantBento() {
                 Prime Cuts, Woodfire Grills &amp; Modern Craft
               </h3>
               <p className="text-[0.55rem] sm:text-xs md:text-sm text-zinc-700 mt-1 sm:mt-2 leading-relaxed font-normal max-w-2xl line-clamp-2 sm:line-clamp-3">
-                At Rendezvous, each plate is an exploration of texture and aroma. We combine aged dry cuts, locally sourced produce from the Shire highlands, and slow woodfire roasting to deliver dishes that linger on the palate.
+                At RSVP, each plate is an exploration of texture and aroma. We combine aged dry cuts, locally sourced produce from the Shire highlands, and slow woodfire roasting to deliver dishes that linger on the palate.
               </p>
             </div>
 
@@ -86,14 +86,14 @@ export function RestaurantBento() {
               </div>
             </div>
 
-            {/* Bottom-Right Stretched Tall: The Rendezvous Dining Room (1/3 = 4 cols) */}
+            {/* Bottom-Right Stretched Tall: The RSVP Dining Room (1/3 = 4 cols) */}
             <div className="col-span-4 relative w-full rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#feeeda] via-[#fbdce0] to-[#f7ccd5] p-2.5 sm:p-4 md:p-5 h-40 sm:h-60 md:h-72 lg:h-80 flex flex-col justify-between">
               <div>
                 <span className="block text-[0.5rem] sm:text-[0.65rem] md:text-xs font-bold uppercase tracking-wider text-[#9c0200]">
                   About The Space
                 </span>
                 <h4 className="text-[0.65rem] sm:text-sm md:text-base lg:text-lg font-extrabold text-zinc-900 leading-tight mt-0.5 sm:mt-1">
-                  The Rendezvous Dining Room
+                  The RSVP Dining Room
                 </h4>
                 <p className="text-[0.5rem] sm:text-xs text-zinc-700 mt-1 sm:mt-2 font-normal leading-relaxed line-clamp-4 sm:line-clamp-6">
                   An intimate setting designed for shared laughter, refined business lunches, and romantic dinners beneath warm ambient lighting.

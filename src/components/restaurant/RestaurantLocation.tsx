@@ -50,7 +50,7 @@ export function RestaurantLocation() {
               </svg>
             </span>
             <div>
-              <p className="text-sm sm:text-base font-semibold text-zinc-900">Rendezvous Restaurant</p>
+              <p className="text-sm sm:text-base font-semibold text-zinc-900">RSVP Restaurant</p>
               <p className="text-sm text-zinc-500 mt-0.5 leading-snug">
                 Blantyre City Centre,<br />Blantyre, Malawi
               </p>
@@ -120,7 +120,7 @@ export function RestaurantLocation() {
         {/* ── RIGHT: Map embed ── */}
         <div className="w-full aspect-[4/3] lg:aspect-auto lg:min-h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-zinc-100">
           <iframe
-            title="Rendezvous Restaurant Location — Blantyre, Malawi"
+            title="RSVP Restaurant Location — Blantyre, Malawi"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30739.35393798887!2d34.97837!3d-15.78636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18d84a3ebf3bfff3%3A0xe5a1a5e5a5e5a5e5!2sBlantyre%2C%20Malawi!5e0!3m2!1sen!2sus!4v1700000000000"
             width="100%"
             height="100%"
