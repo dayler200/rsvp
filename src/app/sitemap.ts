@@ -26,7 +26,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/club`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.9,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/club/rules`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
   ];
 }

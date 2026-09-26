@@ -1,51 +1,22 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/home/Hero";
-import { ThreeDoors } from "@/components/home/ThreeDoors";
-import { WhoWeAre } from "@/components/home/WhoWeAre";
-import { MenuTeaser } from "@/components/home/MenuTeaser";
-import { Gallery } from "@/components/home/Gallery";
-import { ReservationTeaser } from "@/components/home/ReservationTeaser";
-import { Footer } from "@/components/layout/Footer";
+import { HomeContent } from "./HomeContent";
 
 export const metadata: Metadata = {
-  title: "RSVP Exclusive | Restaurant, Lounge & Club — Blantyre",
+  title: "RSVP Exclusive | Premier Bar & Nightclub — Blantyre",
   description:
-    "Step into Blantyre's premier dining and nightlife destination. Reserve your experience at RSVP Exclusive Restaurant, Lounge, or Club.",
+    "Blantyre's premier bar and nightlife destination. Experience high-energy dance floors, resident DJs, VIP bottle service, fine dining, and handcrafted mixology at RSVP Exclusive.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "RSVP Exclusive | Restaurant, Lounge & Club — Blantyre",
+    title: "RSVP Exclusive | Premier Bar & Nightclub — Blantyre",
     description:
-      "Step into Blantyre's premier dining and nightlife destination. Reserve your experience at RSVP Exclusive Restaurant, Lounge, or Club.",
+      "Blantyre's premier bar and nightlife destination with top resident DJs, VIP bottle service, fine dining, and artisanal cocktails.",
     url: "/",
-    images: [{ url: "/ogimage.jpg", width: 1200, height: 630, alt: "RSVP Exclusive Blantyre" }],
+    images: [{ url: "/ogimage.jpg", width: 1200, height: 630, alt: "RSVP Exclusive Bar & Nightclub Blantyre" }],
   },
 };
 
 export default function Home() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* 1. Hero Section (Day & Night Aware) */}
-      <Hero />
-
-      {/* 2. Three Doors Section (Restaurant / Lounge / Club) */}
-      <ThreeDoors />
-
-      {/* 3. Who We Are Section (Text on left, Image on right) */}
-      <WhoWeAre />
-
-      {/* 4. Menu Teaser (Burger + Centre Text + Chef) */}
-      <MenuTeaser />
-
-      {/* 5. Gallery */}
-      <Gallery />
-
-      {/* 6. Table Reservation (Web form + Direct WhatsApp) */}
-      <ReservationTeaser />
-
-      {/* 7. Footer */}
-      <Footer />
-    </div>
-  );
+  return <HomeContent />;
 }

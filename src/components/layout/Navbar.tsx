@@ -19,13 +19,20 @@ const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Restaurant", href: "/restaurant" },
   { label: "Lounge", href: "/lounge" },
-  { label: "Club", href: "/club" },
-  { label: "Menu", href: "/menu" },
+  { label: "About", href: "/#about" },
 ];
 
 export function Navbar() {
   const { isNight } = useTheme();
   const pathname = usePathname();
+  const isForceDark = pathname === "/" || pathname === "/club" || pathname?.startsWith("/club");
+  const effectiveNight = isForceDark || isNight;
+  const isHome = pathname === "/";
+  const navLogo = isHome
+    ? "/rsvp_logowhite1.png"
+    : effectiveNight
+    ? "/rsvp_logowhite.png"
+    : "/rsvp_logoblack.png";
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -94,10 +101,10 @@ export function Navbar() {
           aria-label="Main Navigation"
           className={`pointer-events-auto flex items-center justify-between gap-6 px-6 py-2.5 rounded-2xl transition-all duration-300 w-full max-w-5xl border-0 border-none shadow-none ${
             isScrolled
-              ? isNight
+              ? effectiveNight
                 ? "bg-[#05141f]/90 backdrop-blur-md"
                 : "bg-white/90 backdrop-blur-md"
-              : isNight
+              : effectiveNight
               ? "bg-[#05141f]/60 backdrop-blur-sm"
               : "bg-white/60 backdrop-blur-sm"
           }`}
@@ -109,7 +116,7 @@ export function Navbar() {
           >
             <div className="relative h-10 w-36">
               <Image
-                src="/rsvp_logo1.png"
+                src={navLogo}
                 alt="RSVP"
                 fill
                 sizes="144px"
@@ -130,7 +137,7 @@ export function Navbar() {
                     className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                       isActive
                         ? "text-[#fd2006] bg-[#fd2006]/15 font-semibold"
-                        : isNight
+                        : effectiveNight
                         ? "text-zinc-300 hover:text-white hover:bg-white/10"
                         : "text-zinc-700 hover:text-black hover:bg-black/5"
                     }`}
@@ -163,17 +170,17 @@ export function Navbar() {
         <div
           className={`pointer-events-auto flex items-center justify-between px-4 py-2 rounded-2xl transition-all duration-300 w-full max-w-md border-0 border-none shadow-none ${
             isScrolled || mobileMenuOpen
-              ? isNight
+              ? effectiveNight
                 ? "bg-[#05141f]/90 backdrop-blur-md"
                 : "bg-white/90 backdrop-blur-md"
-              : isNight
+              : effectiveNight
               ? "bg-[#05141f]/75 backdrop-blur-sm"
               : "bg-white/75 backdrop-blur-sm"
           }`}
         >
           <Link href="/" className="relative h-8 w-28">
             <Image
-              src="/rsvp_logo1.png"
+              src={navLogo}
               alt="RSVP"
               fill
               sizes="112px"
@@ -188,7 +195,7 @@ export function Navbar() {
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
             className={`p-1.5 flex items-center justify-center transition-colors ${
-              isNight
+              effectiveNight
                 ? "text-white hover:text-zinc-300 active:opacity-70"
                 : "text-zinc-900 hover:text-black active:opacity-70"
             }`}
@@ -210,14 +217,14 @@ export function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className={`lg:hidden fixed inset-0 z-40 flex flex-col justify-between pt-24 pb-8 px-6 overflow-y-auto ${
-              isNight ? "bg-[#05141f] text-white" : "bg-[#f5f5f5] text-[#05141f]"
+              effectiveNight ? "bg-[#05141f] text-white" : "bg-[#f5f5f5] text-[#05141f]"
             }`}
           >
             {/* Nav list */}
             <div className="flex flex-col gap-2 my-auto">
               <span
                 className={`text-xs uppercase tracking-widest font-semibold mb-2 ${
-                  isNight ? "text-zinc-400" : "text-zinc-500"
+                  effectiveNight ? "text-zinc-400" : "text-zinc-500"
                 }`}
               >
                 Explore RSVP
@@ -238,7 +245,7 @@ export function Navbar() {
                       className={`block px-4 py-2.5 rounded-xl text-base font-semibold tracking-tight transition-colors ${
                         isActive
                           ? "text-[#fd2006] bg-[#fd2006]/15 font-bold"
-                          : isNight
+                          : effectiveNight
                           ? "text-white hover:text-[#fd2006]"
                           : "text-black hover:text-[#9c0200]"
                       }`}
@@ -269,7 +276,7 @@ export function Navbar() {
             {/* Quick Contact Info */}
             <div
               className={`pt-6 flex flex-col gap-3 text-sm ${
-                isNight ? "text-zinc-400" : "text-zinc-600"
+                effectiveNight ? "text-zinc-400" : "text-zinc-600"
               }`}
             >
               <div className="flex items-center justify-between">

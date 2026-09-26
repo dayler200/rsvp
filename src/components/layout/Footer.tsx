@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -18,10 +19,11 @@ import {
 import { useTheme } from "../layout/ThemeProvider";
 
 const EXPLORE_LINKS = [
+  { label: "Home", href: "/" },
   { label: "Restaurant", href: "/restaurant" },
   { label: "Lounge", href: "/lounge" },
-  { label: "The Club", href: "/club" },
-  { label: "Menu", href: "/menu" },
+  { label: "About", href: "/#about" },
+  { label: "Rules & Guidelines", href: "/club/rules" },
 ];
 
 const SOCIALS = [
@@ -58,13 +60,14 @@ const SOCIALS = [
 ];
 
 export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
+  const pathname = usePathname();
+  const isClubRoute = pathname === "/" || pathname === "/club" || pathname?.startsWith("/club");
+  const isForced = forceDark || isClubRoute;
   const { isNight, mounted } = useTheme();
-  const effectiveNight = forceDark || isNight;
+  const effectiveNight = isForced || isNight;
 
-  // forceDark is a static prop (same on server + client) so it's safe to use
-  // directly. Only isNight (time-based) needs the mounted guard to avoid SSR
-  // hydration mismatches.
-  const logoSrc = forceDark
+  // isForced is a static route check so it's safe to use directly.
+  const logoSrc = isForced
     ? "/rsvp_logowhite.png"
     : (mounted && isNight ? "/rsvp_logowhite.png" : "/rsvp_logoblack.png");
 
@@ -76,7 +79,7 @@ export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
   const bg          = effectiveNight ? "bg-[#05141f] text-zinc-100" : "bg-white text-zinc-900";
 
   return (
-    <footer className={`w-full pt-16 pb-0 overflow-hidden ${bg} ${forceDark ? "force-dark" : ""}`}>
+    <footer className={`w-full pt-16 pb-0 overflow-hidden ${bg} ${isForced ? "force-dark" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
         {/* ─── DESKTOP UPPER CONTENT (>= 1024px) ────────────────── */}
@@ -85,7 +88,7 @@ export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <p className={`text-xl sm:text-2xl font-semibold tracking-tight leading-snug max-w-sm ${brandText}`}>
-                RSVP is Blantyre&apos;s premier restaurant, lounge, and club crafted for elevated dining and vibrant nightlife.
+                RSVP is Blantyre&apos;s premier bar and nightclub crafted for electric nightlife, world-class sound, and elevated dining.
               </p>
             </div>
             <div className={`mt-6 flex items-center gap-2 text-xs font-medium ${mutedColor}`}>
@@ -157,7 +160,7 @@ export function Footer({ forceDark = false }: { forceDark?: boolean } = {}) {
           {/* Brand Statement */}
           <div>
             <p className={`text-xl font-semibold tracking-tight leading-snug ${brandText}`}>
-              RSVP is Blantyre&apos;s premier restaurant, lounge, and club crafted for elevated dining and vibrant nightlife.
+              RSVP is Blantyre&apos;s premier bar and nightclub crafted for electric nightlife, world-class sound, and elevated dining.
             </p>
             <div className={`mt-4 flex flex-wrap items-center gap-2 text-xs font-medium ${mutedColor}`}>
               <FontAwesomeIcon icon={faLocationDot} className="w-3.5 h-3.5 text-[#fd2006]" />

@@ -38,11 +38,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "RSVP Exclusive | Restaurant, Lounge & Club — Blantyre",
+    default: "RSVP Exclusive | Premier Bar & Nightclub — Blantyre",
     template: "%s | RSVP Exclusive",
   },
   description:
-    "Blantyre's premier dining and nightlife destination. Experience signature fine dining, handcrafted cocktails, ambient soundscapes, and high-energy club nights at RSVP Exclusive.",
+    "Blantyre's premier bar, nightclub, and entertainment destination. Experience high-energy dance floors, resident DJs, VIP bottle service, fine dining, and artisanal cocktails at RSVP Exclusive.",
   applicationName: "RSVP Exclusive",
   authors: [{ name: "RSVP Exclusive", url: siteUrl }],
   creator: "RSVP Exclusive",
@@ -50,13 +50,14 @@ export const metadata: Metadata = {
   keywords: [
     "RSVP Exclusive",
     "RSVP Blantyre",
-    "Restaurant in Blantyre",
+    "Bar in Blantyre",
+    "Nightclub in Blantyre",
     "Club in Blantyre",
-    "Lounge in Blantyre",
     "Malawi nightlife",
-    "Fine dining Malawi",
+    "Restaurant in Blantyre",
+    "Lounge in Blantyre",
     "Cocktail bar Blantyre",
-    "Steakhouse Blantyre",
+    "VIP bottle service Blantyre",
     "Table reservation Blantyre",
   ],
   alternates: {
@@ -67,24 +68,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "RSVP Exclusive",
-    title: "RSVP Exclusive | Restaurant, Lounge & Club — Blantyre",
+    title: "RSVP Exclusive | Premier Bar & Nightclub — Blantyre",
     description:
-      "Blantyre's premier dining and nightlife destination. Experience signature fine dining, handcrafted cocktails, ambient soundscapes, and high-energy club nights.",
+      "Blantyre's premier bar, nightclub, and entertainment destination. Experience world-class sound, resident DJs, VIP service, and fine dining.",
     images: [
       {
         url: "/ogimage.jpg",
         width: 1200,
         height: 630,
-        alt: "RSVP Exclusive — Restaurant, Lounge & Club in Blantyre",
+        alt: "RSVP Exclusive — Premier Bar & Nightclub in Blantyre",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RSVP Exclusive | Restaurant, Lounge & Club — Blantyre",
+    title: "RSVP Exclusive | Premier Bar & Nightclub — Blantyre",
     description:
-      "Blantyre's premier dining and nightlife destination. Book your table at RSVP Exclusive Restaurant, Lounge or Club.",
+      "Blantyre's premier bar, nightclub, and entertainment destination. Book your VIP table at RSVP Exclusive.",
     images: ["/ogimage.jpg"],
     creator: "@RSVPExclusive",
   },

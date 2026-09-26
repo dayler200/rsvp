@@ -74,9 +74,6 @@ export function Hero() {
               transition={{ duration: 0.5 }}
               className="flex flex-col items-center"
             >
-              <span className="inline-block text-xs uppercase tracking-[0.25em] font-semibold text-[#9c0200] mb-4">
-                Restaurant • Lounge • Club
-              </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-black max-w-3xl leading-[1.08]">
                 Where every meal is a <span className="text-[#9c0200]">moment</span>.
               </h1>
